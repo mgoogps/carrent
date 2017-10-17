@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mgoo.CarRent.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Mgoo.CarRent.Common.Application_Error.ExceptionHandlingAttribute">
+            <summary>
+            全局异常监控，处理未处理的异常
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Application_Error.ExceptionHandlingAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            程序内部如有未处理的异常，则会进此方法
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Mgoo.CarRent.Common.Application_Error.MgooException">
+            <summary>
+            自定义异常
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Common.Extended">
+            <summary>
+            封装一些扩展方法
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Extended.toStringEmpty(System.Object)">
+            <summary>
+            返回当前Object的string，如为null则返回空 
+            </summary>
+            <param name="strRes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Extended.toListDictionary(System.Data.DataTable)">
+            <summary>
+            将DataTable转换成ListDictionary格式
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Extended.toDictionary(System.Data.DataTable)">
+            <summary>
+            把DataTable第一行数据转换成Dictionary
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Extended.toDictionary(System.String)">
+            <summary>
+            把字符串转换成Dictionary字典
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.CryptographyUtil.GetMD5(System.String)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.CryptographyUtil.GetSha1(System.String)">
+            <summary>
+            sha1 加密
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.CryptographyUtil.Base64ToImage(System.String)">
+            <summary>
+            把string类型base64格式的数据，转成图片
+            </summary>
+            <param name="base64"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.JsonHelper.ToJson(System.Object)">
+            <summary>
+            将对象转换成JSON
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.JsonHelper.ToObject``1(System.String)">
+            <summary>
+            把JSON转换成Object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.JsonHelper.DataTableToList(System.Data.DataTable)">
+            <summary>
+            DataTable转换成List Dictionary 
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.Common.Lib.CarStatus">
+            <summary>
+            车辆的租赁状态
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.CarStatus.Applied">
+            <summary>
+            已申请，等待确认
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.CarStatus.BeingRented">
+            <summary>
+            正在出租
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.CarStatus.Complete">
+            <summary>
+            出租完成
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.CarStatus.Refuse">
+            <summary>
+            已拒绝
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.WeChat.APPID">
+            <summary>
+            海立星公众号的appid
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.WeChat.MCHID">
+            <summary>
+            海立星公众号的商户号 
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.WeChat.KEY">
+            <summary>
+            海立星公众号商户支付密钥，参考开户邮件设置
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.WeChat.APPSECRET">
+            <summary>
+            海立星公众号secert（仅JSAPI支付的时候需要配置）
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Common.Lib.Config.SMS">
+            <summary>
+            短信接口相关配置
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.SMS.PREFIX">
+            <summary>
+            存到cache 的key开头
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.SMS.CHUANLAN_ACCOUNT">
+            <summary>
+            创蓝253 国际短信接口 账号
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.SMS.CHUANLAN_PASSWORD">
+            <summary>
+            创蓝253 国际短信接口 密码
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.SMS.SIGNATURE">
+            <summary>
+            短信签名
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Common.Lib.Config.SMS.InternationalCode">
+            <summary>
+            国际区号数组
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Common.Log.LOG_LEVEL">
+            <summary>
+            日志等级，0.不输出日志; 1.只输出错误信息; 2.输出错误和正常信息; 3.输出错误信息、正常信息和调试信息
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Common.Log.LOG_PATH">
+            <summary>
+            写log的路径
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Log.#ctor">
+            <summary>
+            禁止实例化
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Log.Debug``1(``0,System.String[])">
+            <summary>
+            向日志文件写入调试信息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="classObj">当前类</param>
+            <param name="content">写入内容</param>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Log.Info``1(``0,System.String[])">
+            <summary>
+            向日志文件写入运行时信息
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="classObj">当前类</param>
+            <param name="content">写入内容</param>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Log.Error``1(``0,System.Exception)">
+            <summary>
+            向日志文件写入出错信息
+            </summary>
+            <param name="classObj">类名</param>
+            <param name="err">异常对象</param>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.Log.WriteLog(System.String,System.String,System.String)">
+            实际的写日志操作
+            @param type 日志记录类型
+            @param className 类名
+            @param content 写入内容
+        </member>
+        <member name="T:Mgoo.CarRent.Common.HttpService">
+            <summary>
+            http连接基础类，负责底层的http通信
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.HttpService.Post(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Boolean)">
+            <summary>
+            发送一个post请求
+            </summary>
+            <param name="url">地址</param>
+            <param name="postData">数据</param>
+            <param name="timeout">超时(默认5秒)</param>
+            <param name="isUseCert">是否使用证书(默认false)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.HttpService.Get(System.String)">
+            <summary>
+            处理http GET请求，返回数据
+            </summary>
+            <param name="url">请求的url地址</param>
+            <returns>http GET成功后返回的数据，失败抛WebException异常</returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Common.SMSHelper.Send(System.String,System.String)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="phone"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Common.ExcelHelper">
+            <summary>
+            Excel操作类
+            </summary>
+        </member>
+        <member name="M:Common.ExcelHelper.ExcelToEntityList``1(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Text.StringBuilder@)">
+            <summary>
+            从Excel取数据并记录到List集合里
+            </summary>
+            <param name="cellHeard">单元头的值和名称：{ { "UserName", "姓名" }, { "Age", "年龄" } };</param>
+            <param name="filePath">保存文件绝对路径</param>
+            <param name="errorMsg">错误信息</param>
+            <returns>转换后的List对象集合</returns>
+        </member>
+        <member name="M:Common.ExcelHelper.Excel2003ToEntityList``1(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Text.StringBuilder@)">
+            <summary>
+            从Excel2003取数据并记录到List集合里
+            </summary>
+            <param name="cellHeard">单元头的Key和Value：{ { "UserName", "姓名" }, { "Age", "年龄" } };</param>
+            <param name="filePath">保存文件绝对路径</param>
+            <param name="errorMsg">错误信息</param>
+            <returns>转换好的List对象集合</returns>
+        </member>
+        <member name="M:Common.ExcelHelper.EntityListToExcel2003(System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.IList,System.String)">
+            <summary>
+            实体类集合导出到EXCLE2003
+            </summary>
+            <param name="cellHeard">单元头的Key和Value：{ { "UserName", "姓名" }, { "Age", "年龄" } };</param>
+            <param name="enList">数据源</param>
+            <param name="sheetName">工作表名称</param>
+            <returns>文件的下载地址</returns>
+        </member>
+        <member name="M:Common.ExcelHelper.SaveExcelFile(System.Web.HttpPostedFile)">
+            <summary>
+            保存Excel文件
+            <para>Excel的导入导出都会在服务器生成一个文件</para>
+            <para>路径：UpFiles/ExcelFiles</para>
+            </summary>
+            <param name="file">传入的文件对象</param>
+            <returns>如果保存成功则返回文件的位置;如果保存失败则返回空</returns>
+        </member>
+        <member name="M:Common.ExcelHelper.GetExcelCellToProperty(System.Type,NPOI.SS.UserModel.ICell)">
+            <summary>
+            从Excel获取值传递到对象的属性里
+            </summary>
+            <param name="distanceType">目标对象类型</param>
+            <param name="sourceCell">对象属性的值</param>
+        </member>
+    </members>
+</doc>

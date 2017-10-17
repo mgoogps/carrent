@@ -1,0 +1,61 @@
+{
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "url": "",
+        "name": "Management",
+        "iconfont": "&#xe637;",
+        "sub": [
+          {
+            "id": 11,
+            "url": "",
+            "name": "Agent",
+            "iconfont": "&#xe637;",
+            "sub": [
+              {
+                "id": 111,
+                "url": "business/business-list.html",
+                "name": "Agent list",
+                "iconfont": "&#xe672;"
+              },
+              {
+                "id": 112,
+                "url": "business/device-list.html",
+                "name": "Device list",
+                "iconfont": "&#xe635;"
+              },
+              {
+                "id": 113,
+                "url": "business/message-list.html",
+                "name": "Message list",
+                "iconfont": "&#xe645;"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "url": "",
+            "name": "Statistics",
+            "iconfont": "&#xe61a;",
+            "sub": [
+              {
+                "id": 21,
+                "url": "business/application-list.html",
+                "name": "Application list",
+                "iconfont": "&#xe637;"
+              },
+              {
+                "id": 22,
+                "url": "monitor/google.html",
+                "name": "Google Monitor",
+                "iconfont": "&#xe606;"
+              } 
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "code": 0
+}

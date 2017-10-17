@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+</head>
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <!--头部搜索-->
+                <section class="panel panel-padding">
+                    <form class="layui-form" data-params='{"dataName":"messagelist","action":"list"}' action="/api/Message/GetMessageList" method="get">
+                        <div class="layui-form">
+                            <div class="layui-inline">
+                                <select name="userid" lay-verify="" lay-search  bind-params='{"url":"/api/Users/GetUserListSimple","data":""}' bind-value="UserID" bind-text="UserName">
+                                    <option value="">please choose</option>
+                                    <!--<option value="010">Businesses 1</option>
+                                    <option value="021">Businesses 2</option>
+                                    <option value="0571">Businesses 3</option>-->
+                                </select>
+                            </div>
+
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input start-date" name="start_date" id="txt_start" placeholder="starting time">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input end-date" name="end_date" id="txt_end" placeholder="end time">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="keywords">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button lay-submit class="layui-btn" lay-filter="search">search</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!--列表-->
+                <section class="panel panel-padding">
+                    <div class="group-button">
+                        <button class="layui-btn layui-btn-small layui-btn-danger ajax-all"  data-name="checkbox" data-params='{"url": "/api/Message/DelsMessages","action":"del","dataName":"messagelist","key":"id"}'>
+                            <i class="iconfont">&#xe626;</i> delete
+                        </button>
+                      <!--  <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"sell=1","dataName":"products","key":"id"}'>
+                            <i class="iconfont">&#xe603;</i> edit
+                        </button>
+                        <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"switch=1","dataName":"products","key":"id"}'>
+                            <i class="layui-icon">&#x1005;</i> 审核
+                        </button>
+                        <button class="layui-btn layui-btn-small modal" data-params='{"content": "product-add.html", "title": "添加文章","type":"2"}'>
+                            <i class="iconfont">&#xe649;</i> add
+                        </button>-->
+                    </div>
+                    <div class="layui-form">
+                        <table id="example" class="layui-table jq-even" data-params='{"dataName":"messagelist","key":"exceptionid"}'>
+                            <thead>
+                                <tr>
+                                    <th width="30"><input type="checkbox" id="checkall" data-name="id" lay-filter="check" lay-skin="primary"></th>
+                                    <th width="80">No.</th>
+                                    <th>Affiliated Users</th>
+                                    <th>DeviceName</th>
+                                    <th>IMEI</th>
+                                    <th>Message</th>
+                                    <th>Create</th> 
+                                    <th>PhoneNum</th> 
+                                    <th width="142">Operate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-right" id="page"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<script id="list-tpl" type="text/html" data-params='{"url":"/api/Message/GetMessageList","dataName":"messagelist","pageid":"#page","server":true}'>
+
+    {{# layui.each(d.list, function(index, item){ }}
+    <tr>
+        <td><input type="checkbox" name="id" value="{{ item.ExceptionID}}" lay-skin="primary"></td>
+        <td> {{ item.RowIndex}}</td>
+        <td>
+           {{item.UserName}}
+        </td>
+        <td >{{ item.DeviceName}}</td>
+        <td>{{item.SerialNumber}}</td>
+        <td>{{item.Message}} </td>
+        <td> {{ item.Created}} </td>
+        <td>{{ item.PhoneNum}} </td>
+        <!--<td><input type="text" class="layui-input ajax-blur" name="order" value="{{ item.id}}" data-params='{"url":"../data/success.json","data":"id={{ item.id}}"}'> </td>-->
+        <!--<td><input type="checkbox" name="switch" lay-skin="switch" value="1" lay-text="已审|待审" {{#if (item.switch){ }} checked="checked" {{# } }} lay-filter="ajax" data-params='{"url":"../data/success.json","data":"id={{ item.id}}&name=paco"}'> </td>-->
+        <td>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-mini layui-btn-danger ajax" data-params='{"url": "/api/Message/DelMessage","key":"exceptionid","data":"exceptionid={{item.ExceptionID }}","confirm":true}'>
+                    <i class="iconfont">&#xe626;</i>delete
+                </button>
+            </div>
+        </td>
+    </tr>
+    {{# }); }}
+</script>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader',
+        jqcitys: "jqmodules/jqcitys",
+        mgajax: "../../Assets/js/mgajax"
+    })
+</script>
+<script>
+    layui.use(['list', 'mgajax'], function () {
+        var $ = layui.jquery;
+            var str = GetQueryString("count");
+            if (str != null) {
+                $("#txt_start").val("2017-9-11 00:00:00.000");
+                $("#txt_end").val("2017-9-11 23:59:59.999");
+            }
+        });
+    //获取页面传递的参数根据参数判断是否查询今日的报警消息
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+        return unescape(r[2]);
+        return null;
+    }
+    
+</script>
+</html>

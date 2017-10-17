@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+
+</head>
+
+<body class="childrenBody">
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+                <section class="panel panel-padding">
+                    <form  class="layui-form" data-params='{"dataName":"userinfo","action":"nodo"}' action="/api/Users/UpdateUsersInfo" method="post">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Account</label>
+                            <div class="layui-input-block">
+                                <input type="hidden" id="txt_userid" name="userid" />
+                                <label id="lable_account" class="layui-form-label"></label>
+                                <!--<input type="text" id="txt_account"  required jq-verify="required"  placeholder="please enter your account" autocomplete="off" class="layui-input "  disabled="">-->
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">User name</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="txt_userName" name="username" required jq-verify="required" placeholder="please enter user name" autocomplete="off" class="layui-input ">
+                            </div>
+                        </div>
+                       
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Contact</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="contact" placeholder="contact" autocomplete="off" class="layui-input " id="txt_contact">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Phone</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="phone" placeholder="Phone" required jq-verify="number" maxlength="15" autocomplete="off" class="layui-input " id="txt_phone" />
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Price</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="price" placeholder="Price" required jq-verify="number" maxlength="5" autocomplete="off" class="layui-input " id="txt_price" />
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Email</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="email" required jq-verify="email" placeholder="email" autocomplete="off" class="layui-input " id="txt_email" />
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Address</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="address" placeholder="Address" autocomplete="off" class="layui-input " id="txt_address" />
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" jq-submit jq-filter="submit" id="SaveUserInfo">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/layui/layui.js"></script>
+
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader',
+        jqcitys: "jqmodules/jqcitys",
+        mgajax: "../../Assets/js/mgajax",
+    })
+</script>
+<script>
+    function load() {
+        layui.use(['simpleform', 'mgajax'], function () {
+            var com = layui.mgajax;
+            var $ = layui.jquery;
+            com.ajax({
+                url: "/api/Users/GetUsersInfo?userid=" + com.user.userid,
+                type: "get",
+                success: function (res) {
+                    var data = res.result;
+                    $("#txt_userid").val(com.user.userid);
+                    $("#lable_account").text(data[0].LoginName);
+                    $("#txt_userName").val(data[0].UserName);
+                    $("#txt_price").val((data[0].price)/100);
+                    $("#txt_contact").val(data[0].FirstName);
+                    $("#txt_phone").val(data[0].CellPhone);
+                    $("#txt_email").val(data[0].PrimaryEmail);
+                    $("#txt_address").val(data[0].Address1);
+                }
+            });
+        });
+    }
+</script>
+
+</html>

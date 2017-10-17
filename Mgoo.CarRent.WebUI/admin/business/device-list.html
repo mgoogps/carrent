@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>设备列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+    <style>
+        .layui-upload-button{
+            line-height: 30px!important;
+            height:30px!important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <!--头部搜索-->
+                <section class="panel panel-padding">
+                    <form class="layui-form" data-params='{"dataName":"devicelist","action":"list"}' action="/api/Devices/GetDeviceList/page" method="get">
+                        <div class="layui-form">
+                            <div class="layui-inline">
+                                <select name="userid" id="selectUsers" lay-verify="" lay-search bind-params='{"url":"/api/Users/GetUserListSimple","data":""}' bind-value="UserID" bind-text="UserName">
+                                    <option value="">please choose</option>
+                                    <!--<option value="010">Businesses 1</option>
+                                    <option value="021">Businesses 2</option>
+                                    <option value="0571">Businesses 3</option>-->
+                                </select>
+                            </div>
+
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input start-date" name="start_date" placeholder="starting time">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input end-date" name="end_date" placeholder="end time">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="keywords">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button lay-submit class="layui-btn" lay-filter="search">search</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </section>
+    
+                <!--列表-->
+                <section class="panel panel-padding">
+                    <div class="group-button">
+                        <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-params='{"url": "/api/Devices/DelsDevices","action":"del","dataName":"devicelist","key":"deviceid"}'>
+                            <i class="iconfont">&#xe626;</i> delete
+                        </button>
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "user-info.html","area":"600px,300px","data":"sell=1","dataName":"devicelist","key":"id"}'>
+                            <i class="iconfont">&#xe603;</i> edit
+                        </button>-->
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"switch=1","dataName":"devicelist","key":"id"}'>
+                            <i class="layui-icon">&#x1005;</i> 审核
+                        </button>-->
+                        <button class="layui-btn layui-btn-small modal" data-params='{"content": "add-device.html","type":"2","area":"700px,550px", "title": "add device","full":"false","key":"id","scroll":false,"pars":"add"}'>
+                            <i class="iconfont">&#xe649;</i> add
+                        </button>
+
+                        <!--<button type="button" class="layui-btn layui-btn-small layui-btn-normal" id="btn_Upload">
+                            <i class="iconfont">&#xe649;</i> Batch Import
+                        </button>-->
+                        <!--<button class="layui-btn layui-btn-small layui-btn-warm" data-params='{"url": "/api/Device/ImportDevice","dataName":"devicelist","key":"id"}'>
+                            <i class="iconfont">&#xe649;</i> Batch Import
+                        </button>-->
+                        <button class="layui-btn layui-btn-small layui-btn-normal" data-params=''>
+                            <i class="iconfont">&#xe649;</i> Batch export
+                        </button>
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal" data-params='' onclick="$('#input_upload').trigger('click')">
+                            <i class="iconfont">&#xe649;</i> Batch Import
+                        </button>-->
+                        <input type="file" name="file" class="layui-upload-file" id="input_upload" lay-title="Batch Import">
+                    </div>
+
+                    <div class="layui-form">
+                        <table id="example" class="layui-table jq-even" data-params='{"dataName":"devicelist","key":"id"}'>
+                            <thead>
+                                <tr>
+                                    <th width="30"><input type="checkbox" id="checkall" data-name="id" lay-filter="check" lay-skin="primary"></th>
+                                    <th width="60">No.</th>
+                                    <th>Agent</th>
+                                    <th>DeviceName</th>
+                                    <th>GroupName</th>
+                                    <th>IMEI Number</th>
+                                    <th>Phone Number</th>
+                                    <th>Create</th>
+                                    <th>LastCommunication</th>
+                                    <th>Remark</th>
+                                    <!--<th width="80">审核</th>-->
+                                    <th width="142">Operate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-right" id="page"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <script id="list-tpl" type="text/html" data-params='{"url":"/api/Devices/GetDeviceList/page","dataName":"devicelist","pageid":"#page","server":true}'>
+
+        {{# layui.each(d.list, function(index, item){ }}
+        <tr>
+            <td><input type="checkbox" name="deviceid" value="{{ item.DeviceID}}" lay-skin="primary"></td>
+            <td> {{ item.RowIndex}}</td>
+            <td> {{ item.UserName}}</td>
+            <td> {{item.DeviceName}} </td>
+            <td> {{item.GroupName}} </td>
+            <td> {{ item.SerialNumber}}</td>
+            <td> {{ item.PhoneNum}}</td>
+            <td> {{ item.Created}}</td>
+            <td> {{ item.LastCommunication  }} </td>
+            <td> {{ item.Description  }}  </td>
+            <!--<td><input type="text" class="layui-input ajax-blur" name="order" value="{{ item.id}}" data-params='{"url":"../data/success.json","data":"id={{ item.id}}"}'> </td>-->
+            <!--<td><input type="checkbox" name="switch" lay-skin="switch" value="1" lay-text="已审|待审" {{#if (item.switch){ }} checked="checked" {{# } }} lay-filter="ajax" data-params='{"url":"../data/success.json","data":"id={{ item.id}}&name=paco"}'> </td>-->
+            <td>
+                <div class="layui-btn-group">
+                    <!--<button class="layui-btn layui-btn-mini modal-iframe" name="BtnEdit" value="{{item.DeviceID}}" onclick="DeviceEdit(this)">
+                        <i class="iconfont">&#xe653;</i>edit
+                    </button>-->
+                    <button class="layui-btn layui-btn-mini modal" data-params='{"content": "edit-device.html","type":"2","area":"700px,620px", "title": "edit device","full":"false","key":"id","scroll":false,"pars":"{{ item.DeviceID }},{{ item.DeviceName }}"}'>
+                        <i class="iconfont">&#xe653;</i>edit
+                    </button>
+                    <button class="layui-btn layui-btn-mini layui-btn-danger ajax" data-params='{"url": "/api/Devices/DelDevice","data":"id={{ item.DeviceID }}","action":"del","confirm":true }'>
+                        <i class="iconfont">&#xe626;</i>delete
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {{# }); }}
+    </script>
+
+</html>
+
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"+new Date().getTime()
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        model:'jqmodules/modal',
+       webuploader: 'lib/webuploader',
+       jqcitys: "jqmodules/jqcitys",
+       mgajax: "../../Assets/js/mgajax"
+    })
+</script>
+<script>
+    layui.use(['list', 'mgajax', 'upload'], function () {
+        var $ = layui.jquery
+        , com = layui.mgajax;
+        var upload = layui.upload;
+       //$("#input_upload").on('click', function () {
+       //     layui.upload({
+       //         url: '/api/Devices/ImportDeviceInfo'
+       //        ,elem: '#input_upload'
+       //        ,method: 'get'
+       //        ,type: 'file'
+       //        , ext: 'xls|xlsx'
+       //         , before: function (request) {
+       //              //返回的参数item，即为当前的input DOM对象
+       //             request.setRequestHeader("Authorization", "CARRENT@GOOGLE");
+       //             var storage = com.getStorage();
+       //             if (storage) {
+       //                 setRequestHeader.setRequestHeader("Token", storage.token);
+       //             }
+       //             //如果返回false则取消本次请求
+       //             _beforeSend(setRequestHeader);
+       //          }
+       //        ,success: function (res) {
+       //            console.log(res); //上传成功返回值，必须为json格式
+       //        }
+       //     });
+       // })       
+    });
+    
+</script> 

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF2EE22A-79FC-44F2-AC4D-A860679D38D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mgoo.CarRent.DAL</RootNamespace>
+    <AssemblyName>Mgoo.CarRent.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apps.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarCommandQueue.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarRentEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarRentEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarRentEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarRentEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarRentEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DapperHelper.cs" />
+    <Compile Include="DBHelper.cs" />
+    <Compile Include="Devices.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DevicesConfig.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dictionary.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionMessage.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeoFence.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Groups.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseRecord.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseUsers.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LKLocation.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MgooWebClient.cs" />
+    <Compile Include="MobileAppInfo.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RechargeRecord.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="Users.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeChatUsers.cs">
+      <DependentUpon>CarRentEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="CarRentEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CarRentEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CarRentEntities.edmx.diagram">
+      <DependentUpon>CarRentEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CarRentEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarRentEntities.edmx</DependentUpon>
+      <LastGenOutput>CarRentEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CarRentEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarRentEntities.edmx</DependentUpon>
+      <LastGenOutput>CarRentEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mgoo.CarRent.Common\Mgoo.CarRent.Common.csproj">
+      <Project>{8dc85137-0699-4474-82d4-b9d6dfd40c08}</Project>
+      <Name>Mgoo.CarRent.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

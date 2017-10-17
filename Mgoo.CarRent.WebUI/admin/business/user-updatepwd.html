@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+
+</head>
+
+<body class="childrenBody">
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 ">
+                <section class="panel panel-padding">
+                    <form class="layui-form changePwd" data-params='{"dataName":"userupdatepwd","action":"nodo"}' action="/api/Users/UpdateUserPwd" method="post">
+                        <div style="margin:0 0 15px 110px;color:#f00;"></div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">UserName</label>
+                            <div class="layui-input-block">
+                                <label class="layui-form-label" id="lableUserName"></label>
+                                <!--<input type="text" value="UserNamevalue" disabled="" id="txtUserName" class="layui-input layui-disabled">-->
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Old PassWord</label>
+                            <div class="layui-input-block">
+                                <input type="hidden" name="userid" id="txt_updateuserid" value="">
+                                <input type="password" name="old_userpwd" id="txt_oldpwd" value="" placeholder="Please enter your old password"  class="layui-input pwd">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">New PassWord</label>
+                            <div class="layui-input-block">
+                                <input type="password" name="new_userpwd"id="txt_newpwd" value=""  placeholder="Please enter your new password"   class="layui-input pwd">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Confirm PassWord</label>
+                            <div class="layui-input-block">
+                                <input type="password" name="confirm_userpwd" id="txt_confirmpwd" value=""  placeholder="Please confirm new password" lay-verify="required|confirmPwd" class="layui-input pwd">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" jq-submit jq-filter="submit"> Change Password</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader',
+        jqcitys: "jqmodules/jqcitys",
+        mgajax: "../../../Assets/js/mgajax",
+    })
+    layui.use(['simpleform', 'mgajax'], function () {
+        var com = layui.mgajax;
+        var $ = layui.jquery;
+        $("#lableUserName").text(com.user.username);
+        
+        var userid = com.user.userid;
+        console.log(userid);
+        $("#txt_updateuserid").val(userid);
+        //$("#txt_oldpwd").val(123123);
+        //$("#txt_newpwd").val("123123");
+        //$("#txt_confirmpwd").val("123123");
+    });
+</script>
+</html>

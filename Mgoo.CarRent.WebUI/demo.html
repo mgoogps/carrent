@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+	<meta charset="utf-8" />
+   
+    <script src="Assets/js/map.js"></script>
+    <style type="text/css">
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        body, html { width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+    </style>  
+</head>
+<body>
+    <input type="file" name="img" id="upload_file" value="" />adfsdfsd
+    <div id="allmap"></div>
+    <script async defer src="http://maps.google.cn/maps/api/js?key=AIzaSyCamnlWckhzlXouCA50LbKPsimIVnbFitQ&callback=initMap"></script>
+    <script src="Assets/js/GeoUtils.js"></script>
+    <script src="Scripts/jquery-1.6.2.min.js"></script>
+    <script>
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://intapi.253.com/send/json",
+            "method": "POST",
+            type: "POST",
+            "contentType": "application/json",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+            },
+             data : {
+                "account": "I6313616",
+                "password": "f3arA7QX5o567f",
+                "msg": "【MGOO】Your registration code is: ",
+                "mobile": "8618507480591",
+                "content-type": "application/json"
+            }
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+        function initMap() {
+            google.maps.Polygon.prototype.getSouthWest = function () {
+                var array = this.getPath().getArray();
+                //返回多边形区域的西南角
+                var south_west_lat = array[0].lat();//西南角的纬度
+                var south_west_lng = array[0].lng();//西南角的经度
+                for (var i = 0; i < array.length; i++) {
+                    var ai = array[i];
+                    if (ai.lat() < south_west_lat) {
+                        south_west_lat = ai.lat();
+                    }
+                    if (ai.lng() < south_west_lng) {
+                        south_west_lng = ai.lng();
+                    }
+                }
+                return { lat: south_west_lat, lng: south_west_lng };
+            }
+            google.maps.Polygon.prototype.getNorthEast = function () {
+                var array = this.getPath().getArray();
+                //返回多边形区域的东北角
+                var north_east_lat = array[0].lat();//东北角的纬度
+                var north_east_lng = array[0].lng();//东北角的经度     
+                for (var i = 0; i < array.length; i++) {
+                    var ai = array[i];
+                    if (ai.lat() > north_east_lat) {
+                        north_east_lat = ai.lat();
+                    }
+                    if (ai.lng() > north_east_lng) {
+                        north_east_lng = ai.lng();
+                    }
+                }
+                return { lat: north_east_lat, lng: north_east_lng };
+            }
+
+            //mgoo = new mgMap("allmap", "GOOGLE");
+            //mgoo.loadMap();
+
+            var map = new google.maps.Map(document.getElementById('allmap'), {
+                zoom: 5,
+                center: { lat: 39.920977, lng: 116.357112 },
+                //mapTypeId: 'HYBRID'
+            });
+
+            // Define the LatLng coordinates for the polygon's path.
+            var triangleCoords = [
+              { lat: 39.920977, lng: 116.357112 },
+              { lat: 39.913063, lng: 116.385243 },
+              { lat: 39.917988, lng: 116.394226 },
+              { lat: 39.921364, lng: 116.401772 }
+            ];
+            triangleCoords = [
+                { "lat": 23.0663820942 , "lng":  113.996227  },
+                { "lat": 23.0618284 , "lng":  114.002939  },
+                { "lat": 23.06438209 , "lng":  114.0122273  },
+                { "lat": 23.0723821 , "lng":  114.00522735  }
+            ];
+            // Construct the polygon.
+            var bermudaTriangle = new google.maps.Polygon({
+                paths: triangleCoords,
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                draggable: true,
+                geodesic: false,
+                editable: true
+            });
+            bermudaTriangle.setMap(map);
+            bermudaTriangle.addListener('click', function (e) {
+                
+                //var sw_marker = new google.maps.Marker({
+                //    position: sw_LatLng,
+                //    map: map,
+                //    title: '西南角!'
+                //});
+              
+               
+                //var ne_marker = new google.maps.Marker({
+                //    position: ne_LatLng,
+                //    map: map,
+                //    title: '东北角!'
+                //});
+                var array = bermudaTriangle.getPath().getArray();
+                var p = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+                var sw = bermudaTriangle.getSouthWest();
+                var ne = bermudaTriangle.getNorthEast();
+                var isin = BMapLib.GeoUtils.isPointInPolygon(p, bermudaTriangle, sw, ne);
+                console.log(isin);
+                console.log(sw);
+                console.log(ne);
+            });
+
+            map.addListener("click", function (e) {
+                var array = bermudaTriangle.getPath().getArray();
+                var p = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+                //var swne = getSwNe(bermudaTriangle);
+                var sw = bermudaTriangle.getSouthWest();
+                var ne = bermudaTriangle.getNorthEast();
+                var isin = BMapLib.GeoUtils.isPointInPolygon(p, bermudaTriangle, sw, ne);
+                console.log(isin);
+                // console.log(e.latLng.lat() + "," + e.latLng.lng())
+                var arr = [];
+                for (var i = 0; i < array.length; i++) {
+                    arr.push(  array[i].lat() +"," +  array[i].lng() );
+                }
+                console.log(arr.join('|'));
+            });
+        }
+       
+        $(function () {
+            $("input[name=img]").change( function () {
+                console.log($(this).attr("value"));
+                gen_base64();
+               
+            });
+        })
+        function gen_base64() {
+            var file = document.getElementById('upload_file').files[0];
+            r = new FileReader();  //本地预览
+            r.onload = function () {
+                // document.getElementById('base64_output').value = r.result;
+                console.log(r.result);
+            }
+            var base64 = r.readAsDataURL(file);    //Base64
+            console.log(base64);
+        }
+        function getBase64Image(img) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+            var dataURL = canvas.toDataURL("image/" + ext);
+            console.log(dataURL);
+            return dataURL;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Rent</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript">
+
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+            function hideURLbar(){  window.scrollTo(0,1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- font-awesome icons -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- //font-awesome icons -->
+    <link href="assets/css/fonts.googleapis.com.css" rel="stylesheet" />
+    <!--<link  async defer href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet"> -->
+
+    <!--<link href="assets/css/mgoo-style.css" rel="stylesheet" />--> 
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        html, body {
+            /*overflow:hidden;*/
+            height: 100%;
+        } 
+        .agileinfo_main_grid_left_grid ul li {
+            text-transform: capitalize;
+        }
+        .getcode {
+          background-color:#e3a47a
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!--<h1>Shopify Payment Form</h1>-->
+        <div class="w3_agile_main_grids">
+            <div class="agile_main_grid_left">
+                <div class="w3_agileits_main_grid_left_grid">
+                    <h2 id="h2DeviceName"></h2>
+                    <h3 id="hPrice">M.＄<label id="lablePrice">0.00</label><span>/hour</span></h3>
+                    <p id="pStatus2"> total based on hourly rate,3 ringgit per hour.</p>
+                </div>
+                <div class="agileinfo_main_grid_left_grid">
+                    <!--<h3>Free for five minutes</h3>-->
+                    <p><!--return if you do not like the end result--></p>
+                    <ul>
+                        <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Only in the attractions</li>
+                        <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Please ride safely</li>
+                        <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Free for five minutes</li>
+                        <!--<li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>````````</li>-->
+                    </ul>
+                    <a href="#" class="agileits_questions">Click to start applying for a car.</a>
+                    <div class="w3layouts_help_desk">
+                        <a href="javascript:;" id="aEnd">End</a>
+                        <a href="javascript:;" id="aStart">Start</a>
+                        <!--<a href="tel:10086#mp.weixin.qq.com">Start</a>-->
+                        <a href="javascript:;" id="aMap">Map</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="agileits_w3layouts_main_grid_right" id="divModal1" style="display:none">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group input-group-lg" style="white-space:nowrap">
+                        <span class="input-group-addon">phone:</span>
+                        <input type="text" class="form-control" id="txtPhone" name="phone" value="" placeholder="phone">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default disabled" id="btnGetCode"  type="button">
+                                Get
+                            </button>
+                        </span>
+                    </div><br>
+                    <div class="input-group input-group-lg" style="white-space:nowrap">
+                        <span class="input-group-addon" style="margin-left:-15px;">code:</span>
+                        <input type="text" class="form-control" id="txtCode" placeholder="6 digits"> 
+                    </div><br>
+                </form>
+
+            </div>
+ 
+
+            <div class="agileits_w3layouts_main_grid_right"  style="display:block">
+                <div class="wthree_main_grid_right_grid">
+                    <!--<h3>fill the fields and proceed to payment</h3>-->
+                    <div class="w3ls_main_grid_right_grid_form">
+                        <form action="#" method="post">
+                            <!--<div class="w3l_main_grid_right_grid_form1">
+                                <label>quoted hours</label>
+                                <select id="w3_agileits_select" class="w3layouts_select" onchange="change_country(this.value)">
+                                    <option value="null">Time</option>
+                                    <option value="null">1 Hour</option>
+                                    <option value="null">2 Hours</option>
+                                    <option value="null">4 Hours</option>
+                                    <option value="null">More</option>
+                                </select>
+                            </div>
+                            <div class="w3l_main_grid_right_grid_form1">
+                                <label>delivery</label>
+                                <select id="w3_agileits_select1" class="w3layouts_select" onchange="change_country(this.value)">
+                                    <option value="null">1 - 2 Days</option>
+                                    <option value="null">2 - 4 Days</option>
+                                    <option value="null">4 - 5 Days</option>
+                                    <option value="null">5 - 6 Days</option>
+                                    <option value="null">More</option>
+                                </select>
+                            </div>
+                            <div class="w3l_main_grid_right_grid_form1">
+                                <label>Communication</label>
+                                <input type="email" name="Email" placeholder="Email" required="">
+                            </div>
+                            <div class="w3l_main_grid_right_grid_form2">
+                                <label>Ticket number</label>
+                                <input type="text" name="Number" placeholder="Number" required="">
+                            </div>
+                            <div class="w3l_main_grid_right_grid_form2">
+                                <label>Shopify URL</label>
+                                <input type="text" name="URL" placeholder="URL" required="">
+                            </div>
+                            <div class="clear"> </div>
+                            <div class="w3_main_grid_right_grid_form_textarea">
+                                <label>describe you are request</label>
+                                <textarea name="Message" placeholder="Message..." required=""></textarea>
+                            </div>
+                            <div class="w3layouts_check">
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I agree to the terms of services</label>
+                            </div>-->
+                            <input type="button" value="Lock" style="width:48%">
+                            
+                            <input type="button" value="Help me" style="width:48%" onclick="Helpme()">
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <div class="agileits_copyright">
+            <!--<p>© 2017 </p>-->
+        </div>
+    </div>
+    <style>
+
+    </style>
+    <script src="assets/jquery-3.2.1.js"></script> 
+    <script src="assets/JqueryExtended.js"></script>
+    <script src="assets/layer/mobile/layer.js"></script>
+    <script type="text/javascript">
+        var timeleng = 60,_layero,_phone;
+        $(function () {
+            var devid = global.GetQueryString("deviceid");
+            global.deviceid = devid;
+            if (!devid) {  
+                global.msg('Parameter error.');
+                return;
+            }
+             
+            global.ajax({
+                url: "/api/Weixin/GetDeviceInfo",
+                data: { deviceid: devid },
+                success: function (res) { 
+
+                    var data = res.result;
+                    $("#h2DeviceName").text(data.DeviceName);
+                    //Status 1:已租，0:未租
+                    if (data.Status == 1) {
+                     
+                        $("#lablePrice").parent().hide();
+                        var fee;
+                        if (data.Time < 5) {
+                            fee = 0;
+                        } else {
+                            fee = (data.Price / 100) * Math.ceil(data.Time / 60);
+                        } 
+                        $("#pStatus2").show().html(parseInt(data.Time / 60) + " hour " + (data.Time % 60) + "  Minute <br/> fee:M.＄" + fee + ".");
+                        $("#aStart").hide();
+                    } else {
+                        $("#aEnd").hide();
+                        $("#pStatus2").hide();
+                        $("#lablePrice").text(data.Price / 100);
+                    }
+                }, error: function () {
+                    layer.msg("No internet.");
+                }
+            });
+
+            $("#aStart").on("click", function () {
+                Start(); 
+            }); 
+        });
+        function Start() {
+            var storage = localStorage.getItem("request" + global.deviceid);
+            if (storage) {
+                global.msg("Already applied, please wait.");
+                return;
+            }
+
+            layer.open({
+                title: [
+                  'get verification code',
+                 // 'background-color:#00968f; color:#fff;'
+                ]
+              , className: "agileits_w3layouts_main_grid_right"
+              , anim: 'up'
+              , content: $("#divModal1").html()
+              , btn: ['confirm']
+              , style: 'background-color:#00968f;'
+              , yes: function (index) {
+                  var code = $(_layero).find("#txtCode").val();
+                  var phone = $(_layero).find("#txtPhone").val();
+                
+                  global.request(phone, code, function (res) {
+                      if (res.code == 0) {
+                          layer.open({
+                              content: 'Already applied, please wait.'
+                              , btn: 'OK'
+                          });
+                          localStorage.setItem("request"+deviceid,  new Date().toISOString() );
+                      }
+                  });
+                  return false;
+                }
+              , success: function (layero) {
+                  _layero = layero;
+                  $(layero).find(".layui-m-layerbtn [no]").css({ "background-color": "#00968f" });
+                  $(layero).find(".layui-m-layerbtn [yes]").css({ "background-color": "#f1a700" });
+                  $(layero).find("#btnGetCode").on("click", function () {
+                      var phone = $(layero).find("#txtPhone").val();
+                      var verification = /^\+?[1-9][0-9]*$/;
+                      if (!verification.test(phone)) {
+                          // global.msg('phone wrong format.'); 
+                          alert("phone wrong format.");
+                          return;
+                      }
+                      if ($(this).text().trim() != "Get")
+                      { return }
+                      var _this = this;
+                      _phone = phone;
+                      global.sms(phone, function (res) {
+                          if (res.code == 0)
+                          {
+                              GetCode(_this);
+                          }
+                      });  
+                  });
+                  //var s = GetSecond();
+                 // if (parseInt(s) < timeleng) {
+                  //    $("#btnGetCode").trigger("click");
+                     // GetCode(document.getElementById("btnGetCode"));
+                //  }
+              }
+            });
+            //global.ajax({
+            //    url: "/api/Devices/CarRequest",
+            //    data: {},
+            //    success: function () {
+
+            //    }
+            //});
+        }
+        // var second = GetSecond();
+        function Helpme() {
+            window.location.href = "tel:10086#mp.weixin.qq.com";
+        }
+        function GetCode(btn) { 
+            var $btn = $(btn); // $("#btnGetCode"); 
+            
+            var second = timeleng; //parseInt( GetSecond());
+            
+            var interval = setInterval(function () {
+                Countdown();
+            }, 1000);
+            var Countdown = function () {
+                console.log("second:", second);
+                if (second == 0) {
+                    $btn.text("Get");
+                   // SetSecond(timeleng);
+                    clearInterval(interval);
+                } else {
+                    $btn.text(second);
+                    second--;
+                    //SetSecond(second);
+                }
+            }
+            Countdown();
+        }
+        function GetSecond() {
+            var second = localStorage.getItem("second") || timeleng; 
+            return second;
+        }
+        function SetSecond(_second) {
+         
+            localStorage.setItem("second", _second);
+        }
+    </script>
+</body>
+
+</html>

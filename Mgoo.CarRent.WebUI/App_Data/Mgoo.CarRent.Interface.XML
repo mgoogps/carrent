@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mgoo.CarRent.Interface</name>
+    </assembly>
+    <members>
+        <member name="P:Mgoo.CarRent.Interface.AbstractPaging.p">
+            <summary>
+            当前页
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.AbstractPaging.pagesize">
+            <summary>
+            一页多少条
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Interface.IApiResult`1">
+            <summary>
+            webapi 统一 返回泛型类
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.IApiResult`1.code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.IApiResult`1.message">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.IApiResult`1.result">
+            <summary>
+            返回值
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Interface.IApiResult">
+            <summary>
+            weiapi 统一返回非泛型类
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.IApiResult.code">
+            <summary>
+            I状态码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.IApiResult.message">
+            <summary>
+            I说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.IApiResult.result">
+            <summary>
+            I返回值
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Interface.ILanguage">
+            <summary>
+            支持webapi接口返回多语言的接口
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Interface.ILanguage.LanguageISID">
+            <summary>
+            语言编号
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Interface.ILanguage.SetLanguage(System.String)">
+            <summary>
+            设置语言
+            </summary>
+            <param name="language"></param>
+        </member>
+        <member name="M:Mgoo.CarRent.Interface.ILanguage.SetLanguageTag">
+            <summary>
+            设置语言标记。用于自动设置语言
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Interface.IParameterEntity`1">
+            <summary>
+            参数类需要继承此类
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.Interface.IParameterEntity`1.Validate">
+            <summary>
+            必须实现验证参数是否正确的方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.Interface.IParameterEntity.Validate">
+            <summary>
+            必须实现验证参数是否正确的方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.Interface.StatusCode">
+            <summary>
+            I状态码枚举
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.success">
+            <summary>
+             成功
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.parameterError">
+            <summary>
+            参数错误
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.failure">
+            <summary>
+            操作失败
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.error">
+            <summary>
+            出现异常
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.tokenFail">
+            <summary>
+            token失效或无效的token
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.permissions">
+            <summary>
+            没有权限
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Interface.StatusCode.accreditation">
+            <summary>
+            认证失败（根据客户端传过来的Authorization认证）
+            </summary>
+        </member>
+    </members>
+</doc>

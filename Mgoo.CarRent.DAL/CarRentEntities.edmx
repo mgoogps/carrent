@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CarRentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppID" Type="varchar" MaxLength="50" />
+          <Property Name="AppKey" Type="varchar" MaxLength="50" />
+          <Property Name="AppSecret" Type="varchar" MaxLength="50" />
+          <Property Name="MasterSecret" Type="varchar" MaxLength="50" />
+          <Property Name="PackageName" Type="varchar" MaxLength="50" />
+          <Property Name="OS" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CarCommandQueue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommandText" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="IsSend" Type="bit" Nullable="false" />
+          <Property Name="SendDate" Type="datetime" Nullable="false" />
+          <Property Name="IsResponse" Type="bit" />
+          <Property Name="ResponseDate" Type="datetime" />
+          <Property Name="ResponseText" Type="nvarchar" MaxLength="500" />
+          <Property Name="CommandName" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsOfflineSend" Type="bit" />
+          <Property Name="Infos" Type="nvarchar" MaxLength="500" />
+          <Property Name="SendCount" Type="int" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeviceName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DevicePassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="CellPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="PhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="ActiveDate" Type="datetime" Nullable="false" />
+          <Property Name="HireStartDate" Type="datetime" Nullable="false" />
+          <Property Name="HireExpireDate" Type="datetime" Nullable="false" />
+          <Property Name="SpeedLimit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="Icon" Type="varchar" MaxLength="50" />
+          <Property Name="OILCoefficient" Type="float" />
+          <Property Name="BSJIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddHireDay" Type="int" />
+          <Property Name="ServerID" Type="int" />
+          <Property Name="OilPrice" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="CreatedByUser" Type="datetime" />
+          <Property Name="ExpireByUser" Type="datetime" />
+          <Property Name="OilVolume" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="OilLow" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="OilHigh" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="CarImg" Type="nvarchar" MaxLength="500" />
+          <Property Name="ServerID2" Type="int" />
+          <Property Name="ByDistance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="LastByDistance" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="DevicesConfig">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+          <Property Name="ShockSens" Type="int" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CmdID" Type="int" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="DictionaryID" />
+          </Key>
+          <Property Name="DictionaryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="DataText" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataValue" Type="int" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExceptionMessage">
+          <Key>
+            <PropertyRef Name="ExceptionID" />
+          </Key>
+          <Property Name="ExceptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="DeviceID" Type="int" />
+          <Property Name="GeoFenceID" Type="int" />
+          <Property Name="NotificationType" Type="int" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Deleted" Type="int" />
+          <Property Name="ClearDate" Type="datetime" />
+          <Property Name="ClearBy" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="1000" />
+          <Property Name="OLat" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="OLng" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="Lat" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="Lng" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="BaiduLat" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="BaiduLng" Type="decimal" Precision="18" Scale="15" />
+          <Property Name="Power" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="AccON" Type="bit" />
+          <Property Name="EngineON" Type="bit" />
+          <Property Name="OtherStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSM" Type="int" />
+          <Property Name="DeviceUTCTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GeoFence">
+          <Key>
+            <PropertyRef Name="GeofenceID" />
+          </Key>
+          <Property Name="GeofenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FenceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="Longitude" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="Entry" Type="bit" />
+          <Property Name="Exit" Type="bit" />
+          <Property Name="Radius" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IsInclusion" Type="int" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Lat1" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="Lng1" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="FenceType" Type="int" />
+          <Property Name="Width" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="DeviceID" Type="int" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="SouthWestLat" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="SouthWestLng" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="NorthEastLat" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="NorthEastLng" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="Bounds" Type="varchar(max)" />
+          <Property Name="BoundBindIds" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="GroupType" Type="int" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="LeaseRecord">
+          <Key>
+            <PropertyRef Name="LeaseID" />
+          </Key>
+          <Property Name="LeaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="Fee" Type="int" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="LeaseUsers">
+          <Key>
+            <PropertyRef Name="LUID" />
+          </Key>
+          <Property Name="LUID" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="DeviceID" Type="int" />
+        </EntityType>
+        <EntityType Name="LKLocation">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="LastCommunication" Type="datetime" Nullable="false" />
+          <Property Name="ServerUtcDate" Type="datetime" />
+          <Property Name="DeviceUtcDate" Type="datetime" />
+          <Property Name="StopStartUtcDate" Type="datetime" />
+          <Property Name="Latitude" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="Longitude" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="BaiduLat" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="BaiduLng" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Speed" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Course" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+          <Property Name="DataType" Type="int" />
+          <Property Name="DataContext" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+          <Property Name="SOSTime" Type="datetime" />
+          <Property Name="ExceptionTime" Type="datetime" />
+          <Property Name="Distance" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="OLat" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="OLng" Type="decimal" Precision="25" Scale="20" />
+          <Property Name="IsStop" Type="int" />
+          <Property Name="IsOffline" Type="int" />
+          <Property Name="Exception" Type="int" />
+          <Property Name="CarStatus" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToDayDistance" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="MobileAppInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="AppsID" Type="int" />
+          <Property Name="ClientID" Type="varchar" MaxLength="100" />
+          <Property Name="Token" Type="varchar" MaxLength="100" />
+          <Property Name="Model" Type="varchar" MaxLength="20" />
+          <Property Name="Vendor" Type="varchar" MaxLength="20" />
+          <Property Name="OS" Type="varchar" MaxLength="20" />
+          <Property Name="OSVersion" Type="varchar" MaxLength="20" />
+          <Property Name="IMEI" Type="varchar" MaxLength="50" />
+          <Property Name="UUID" Type="varchar" MaxLength="50" />
+          <Property Name="IMSI" Type="varchar" MaxLength="50" />
+          <Property Name="Resolution" Type="varchar" MaxLength="30" />
+          <Property Name="DPI" Type="varchar" MaxLength="30" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="LastDate" Type="datetime" />
+          <Property Name="APPVersion" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RechargeRecord">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransferMethod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransferTime" Type="datetime" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="IsCheck" Type="bit" Nullable="false" />
+          <Property Name="CheckTime" Type="datetime" />
+          <Property Name="Money" Type="int" Nullable="false" />
+          <Property Name="ProofImg" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="1000" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserType" Type="int" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeZone" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Country" Type="smallint" />
+          <Property Name="State" Type="smallint" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CellPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="SMSEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrimaryEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="SecondaryEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="SuperAdmin" Type="int" />
+          <Property Name="AllDeviceCount" Type="int" Nullable="false" />
+          <Property Name="ActivationCount" Type="int" Nullable="false" />
+          <Property Name="MoneyCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeChatUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" />
+          <Property Name="OpenID" Type="varchar" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="PushMsg" Type="varchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Groups_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeRecord_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="RechargeRecord" Type="Self.RechargeRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RechargeRecord">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_OfflineMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CarRentModelStoreContainer">
+          <EntitySet Name="Apps" EntityType="Self.Apps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarCommandQueue" EntityType="Self.CarCommandQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DevicesConfig" EntityType="Self.DevicesConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dictionary" EntityType="Self.Dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExceptionMessage" EntityType="Self.ExceptionMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeoFence" EntityType="Self.GeoFence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaseRecord" EntityType="Self.LeaseRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaseUsers" EntityType="Self.LeaseUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LKLocation" EntityType="Self.LKLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobileAppInfo" EntityType="Self.MobileAppInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RechargeRecord" EntityType="Self.RechargeRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeChatUsers" EntityType="Self.WeChatUsers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Groups_Users" Association="Self.FK_Groups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeRecord_Users" Association="Self.FK_RechargeRecord_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RechargeRecord" EntitySet="RechargeRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarRentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppSecret" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MasterSecret" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PackageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CarCommandQueue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommandText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSend" Type="Boolean" Nullable="false" />
+          <Property Name="SendDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsResponse" Type="Boolean" />
+          <Property Name="ResponseDate" Type="DateTime" Precision="3" />
+          <Property Name="ResponseText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CommandName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsOfflineSend" Type="Boolean" />
+          <Property Name="Infos" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SendCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DevicePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HireStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HireExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SpeedLimit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OILCoefficient" Type="Double" />
+          <Property Name="BSJIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddHireDay" Type="Int32" />
+          <Property Name="ServerID" Type="Int32" />
+          <Property Name="OilPrice" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="CreatedByUser" Type="DateTime" Precision="3" />
+          <Property Name="ExpireByUser" Type="DateTime" Precision="3" />
+          <Property Name="OilVolume" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="OilLow" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="OilHigh" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="CarImg" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ServerID2" Type="Int32" />
+          <Property Name="ByDistance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="LastByDistance" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="DictionaryID" />
+          </Key>
+          <Property Name="DictionaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="DataText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataValue" Type="Int32" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExceptionMessage">
+          <Key>
+            <PropertyRef Name="ExceptionID" />
+          </Key>
+          <Property Name="ExceptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceID" Type="Int32" />
+          <Property Name="GeoFenceID" Type="Int32" />
+          <Property Name="NotificationType" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Int32" />
+          <Property Name="ClearDate" Type="DateTime" Precision="3" />
+          <Property Name="ClearBy" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="OLat" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="OLng" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="Lat" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="Lng" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="BaiduLat" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="BaiduLng" Type="Decimal" Precision="18" Scale="15" />
+          <Property Name="Power" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AccON" Type="Boolean" />
+          <Property Name="EngineON" Type="Boolean" />
+          <Property Name="OtherStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSM" Type="Int32" />
+          <Property Name="DeviceUTCTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GeoFence">
+          <Key>
+            <PropertyRef Name="GeofenceID" />
+          </Key>
+          <Property Name="GeofenceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FenceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Longitude" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Entry" Type="Boolean" />
+          <Property Name="Exit" Type="Boolean" />
+          <Property Name="Radius" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IsInclusion" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Lat1" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Lng1" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="FenceType" Type="Int32" />
+          <Property Name="Width" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="DeviceID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SouthWestLat" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="SouthWestLng" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="NorthEastLat" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="NorthEastLng" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Bounds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BoundBindIds" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="GroupType" Type="Int32" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="CarRentModel.FK_Groups_Users" FromRole="Groups" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="LeaseRecord">
+          <Key>
+            <PropertyRef Name="LeaseID" />
+          </Key>
+          <Property Name="LeaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="Fee" Type="Int32" />
+          <Property Name="UserPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LeaseUsers">
+          <Key>
+            <PropertyRef Name="LUID" />
+          </Key>
+          <Property Name="LUID" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LKLocation">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="LastCommunication" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ServerUtcDate" Type="DateTime" Precision="3" />
+          <Property Name="DeviceUtcDate" Type="DateTime" Precision="3" />
+          <Property Name="StopStartUtcDate" Type="DateTime" Precision="3" />
+          <Property Name="Latitude" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Longitude" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="BaiduLat" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="BaiduLng" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Speed" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Course" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="SerialNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceID" Type="Int32" Nullable="false" />
+          <Property Name="DataType" Type="Int32" />
+          <Property Name="DataContext" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="SOSTime" Type="DateTime" Precision="3" />
+          <Property Name="ExceptionTime" Type="DateTime" Precision="3" />
+          <Property Name="Distance" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="OLat" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="OLng" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="IsStop" Type="Int32" />
+          <Property Name="IsOffline" Type="Int32" />
+          <Property Name="Exception" Type="Int32" />
+          <Property Name="CarStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToDayDistance" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="MobileAppInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="AppsID" Type="Int32" />
+          <Property Name="ClientID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OSVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMSI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Resolution" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DPI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="LastDate" Type="DateTime" Precision="3" />
+          <Property Name="APPVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WeChatUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OpenID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="PushMsg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="CarRentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apps" EntityType="Self.Apps" />
+          <EntitySet Name="CarCommandQueue" EntityType="Self.CarCommandQueue" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" />
+          <EntitySet Name="Dictionary" EntityType="Self.Dictionary" />
+          <EntitySet Name="ExceptionMessage" EntityType="Self.ExceptionMessage" />
+          <EntitySet Name="GeoFence" EntityType="Self.GeoFence" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" />
+          <EntitySet Name="LeaseRecord" EntityType="Self.LeaseRecord" />
+          <EntitySet Name="LeaseUsers" EntityType="Self.LeaseUsers" />
+          <EntitySet Name="LKLocation" EntityType="Self.LKLocation" />
+          <EntitySet Name="MobileAppInfo" EntityType="Self.MobileAppInfo" />
+          <EntitySet Name="WeChatUsers" EntityType="Self.WeChatUsers" />
+          <FunctionImport Name="SP_OfflineMessage" />
+          <EntitySet Name="RechargeRecord" EntityType="CarRentModel.RechargeRecord" />
+          <EntitySet Name="DevicesConfig" EntityType="CarRentModel.DevicesConfig" />
+          <EntitySet Name="Users" EntityType="CarRentModel.Users" />
+          <AssociationSet Name="FK_Groups_Users" Association="CarRentModel.FK_Groups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeRecord_Users" Association="CarRentModel.FK_RechargeRecord_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RechargeRecord" EntitySet="RechargeRecord" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="RechargeRecord">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransferMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransferTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCheck" Type="Boolean" Nullable="false" />
+          <Property Name="CheckTime" Type="DateTime" Precision="3" />
+          <Property Name="Money" Type="Int32" Nullable="false" />
+          <Property Name="ProofImg" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="CarRentModel.FK_RechargeRecord_Users" FromRole="RechargeRecord" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="DevicesConfig">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="Int32" Nullable="false" />
+          <Property Name="ShockSens" Type="Int32" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CmdID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LoginName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="Int32" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeZone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="Int16" />
+          <Property Name="State" Type="Int16" />
+          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SMSEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int16" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="SuperAdmin" Type="Int32" />
+          <Property Name="AllDeviceCount" Type="Int32" Nullable="false" />
+          <Property Name="ActivationCount" Type="Int32" Nullable="false" />
+          <Property Name="MoneyCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="CarRentModel.FK_Groups_Users" FromRole="Users" ToRole="Groups" />
+          <NavigationProperty Name="RechargeRecord" Relationship="CarRentModel.FK_RechargeRecord_Users" FromRole="Users" ToRole="RechargeRecord" />
+        </EntityType>
+        <Association Name="FK_Groups_Users">
+          <End Type="CarRentModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="CarRentModel.Groups" Role="Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeRecord_Users">
+          <End Type="CarRentModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="CarRentModel.RechargeRecord" Role="RechargeRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RechargeRecord">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarRentModelStoreContainer" CdmEntityContainer="CarRentEntities">
+          <EntitySetMapping Name="Apps">
+            <EntityTypeMapping TypeName="CarRentModel.Apps">
+              <MappingFragment StoreEntitySet="Apps">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="AppKey" ColumnName="AppKey" />
+                <ScalarProperty Name="AppSecret" ColumnName="AppSecret" />
+                <ScalarProperty Name="MasterSecret" ColumnName="MasterSecret" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarCommandQueue">
+            <EntityTypeMapping TypeName="CarRentModel.CarCommandQueue">
+              <MappingFragment StoreEntitySet="CarCommandQueue">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="CommandText" ColumnName="CommandText" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="IsResponse" ColumnName="IsResponse" />
+                <ScalarProperty Name="ResponseDate" ColumnName="ResponseDate" />
+                <ScalarProperty Name="ResponseText" ColumnName="ResponseText" />
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="IsOfflineSend" ColumnName="IsOfflineSend" />
+                <ScalarProperty Name="Infos" ColumnName="Infos" />
+                <ScalarProperty Name="SendCount" ColumnName="SendCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="CarRentModel.Devices">
+              <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+                <ScalarProperty Name="DevicePassword" ColumnName="DevicePassword" />
+                <ScalarProperty Name="CarUserName" ColumnName="CarUserName" />
+                <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ActiveDate" ColumnName="ActiveDate" />
+                <ScalarProperty Name="HireStartDate" ColumnName="HireStartDate" />
+                <ScalarProperty Name="HireExpireDate" ColumnName="HireExpireDate" />
+                <ScalarProperty Name="SpeedLimit" ColumnName="SpeedLimit" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="OILCoefficient" ColumnName="OILCoefficient" />
+                <ScalarProperty Name="BSJIP" ColumnName="BSJIP" />
+                <ScalarProperty Name="AddHireDay" ColumnName="AddHireDay" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="OilPrice" ColumnName="OilPrice" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="ExpireByUser" ColumnName="ExpireByUser" />
+                <ScalarProperty Name="OilVolume" ColumnName="OilVolume" />
+                <ScalarProperty Name="OilLow" ColumnName="OilLow" />
+                <ScalarProperty Name="OilHigh" ColumnName="OilHigh" />
+                <ScalarProperty Name="CarImg" ColumnName="CarImg" />
+                <ScalarProperty Name="ServerID2" ColumnName="ServerID2" />
+                <ScalarProperty Name="ByDistance" ColumnName="ByDistance" />
+                <ScalarProperty Name="LastByDistance" ColumnName="LastByDistance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dictionary">
+            <EntityTypeMapping TypeName="CarRentModel.Dictionary">
+              <MappingFragment StoreEntitySet="Dictionary">
+                <ScalarProperty Name="DictionaryID" ColumnName="DictionaryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="DataText" ColumnName="DataText" />
+                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExceptionMessage">
+            <EntityTypeMapping TypeName="CarRentModel.ExceptionMessage">
+              <MappingFragment StoreEntitySet="ExceptionMessage">
+                <ScalarProperty Name="ExceptionID" ColumnName="ExceptionID" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="GeoFenceID" ColumnName="GeoFenceID" />
+                <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ClearDate" ColumnName="ClearDate" />
+                <ScalarProperty Name="ClearBy" ColumnName="ClearBy" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OLat" ColumnName="OLat" />
+                <ScalarProperty Name="OLng" ColumnName="OLng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="BaiduLat" ColumnName="BaiduLat" />
+                <ScalarProperty Name="BaiduLng" ColumnName="BaiduLng" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AccON" ColumnName="AccON" />
+                <ScalarProperty Name="EngineON" ColumnName="EngineON" />
+                <ScalarProperty Name="OtherStatus" ColumnName="OtherStatus" />
+                <ScalarProperty Name="GSM" ColumnName="GSM" />
+                <ScalarProperty Name="DeviceUTCTime" ColumnName="DeviceUTCTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeoFence">
+            <EntityTypeMapping TypeName="CarRentModel.GeoFence">
+              <MappingFragment StoreEntitySet="GeoFence">
+                <ScalarProperty Name="GeofenceID" ColumnName="GeofenceID" />
+                <ScalarProperty Name="FenceName" ColumnName="FenceName" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Entry" ColumnName="Entry" />
+                <ScalarProperty Name="Exit" ColumnName="Exit" />
+                <ScalarProperty Name="Radius" ColumnName="Radius" />
+                <ScalarProperty Name="IsInclusion" ColumnName="IsInclusion" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Lat1" ColumnName="Lat1" />
+                <ScalarProperty Name="Lng1" ColumnName="Lng1" />
+                <ScalarProperty Name="FenceType" ColumnName="FenceType" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SouthWestLat" ColumnName="SouthWestLat" />
+                <ScalarProperty Name="SouthWestLng" ColumnName="SouthWestLng" />
+                <ScalarProperty Name="NorthEastLat" ColumnName="NorthEastLat" />
+                <ScalarProperty Name="NorthEastLng" ColumnName="NorthEastLng" />
+                <ScalarProperty Name="Bounds" ColumnName="Bounds" />
+                <ScalarProperty Name="BoundBindIds" ColumnName="BoundBindIds" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="CarRentModel.Groups">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="GroupType" ColumnName="GroupType" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaseRecord">
+            <EntityTypeMapping TypeName="CarRentModel.LeaseRecord">
+              <MappingFragment StoreEntitySet="LeaseRecord">
+                <ScalarProperty Name="LeaseID" ColumnName="LeaseID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaseUsers">
+            <EntityTypeMapping TypeName="CarRentModel.LeaseUsers">
+              <MappingFragment StoreEntitySet="LeaseUsers">
+                <ScalarProperty Name="LUID" ColumnName="LUID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LKLocation">
+            <EntityTypeMapping TypeName="CarRentModel.LKLocation">
+              <MappingFragment StoreEntitySet="LKLocation">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LastCommunication" ColumnName="LastCommunication" />
+                <ScalarProperty Name="ServerUtcDate" ColumnName="ServerUtcDate" />
+                <ScalarProperty Name="DeviceUtcDate" ColumnName="DeviceUtcDate" />
+                <ScalarProperty Name="StopStartUtcDate" ColumnName="StopStartUtcDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="BaiduLat" ColumnName="BaiduLat" />
+                <ScalarProperty Name="BaiduLng" ColumnName="BaiduLng" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="DataContext" ColumnName="DataContext" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SOSTime" ColumnName="SOSTime" />
+                <ScalarProperty Name="ExceptionTime" ColumnName="ExceptionTime" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="OLat" ColumnName="OLat" />
+                <ScalarProperty Name="OLng" ColumnName="OLng" />
+                <ScalarProperty Name="IsStop" ColumnName="IsStop" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="CarStatus" ColumnName="CarStatus" />
+                <ScalarProperty Name="ToDayDistance" ColumnName="ToDayDistance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileAppInfo">
+            <EntityTypeMapping TypeName="CarRentModel.MobileAppInfo">
+              <MappingFragment StoreEntitySet="MobileAppInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AppsID" ColumnName="AppsID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="OSVersion" ColumnName="OSVersion" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="UUID" ColumnName="UUID" />
+                <ScalarProperty Name="IMSI" ColumnName="IMSI" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+                <ScalarProperty Name="DPI" ColumnName="DPI" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+                <ScalarProperty Name="APPVersion" ColumnName="APPVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeChatUsers">
+            <EntityTypeMapping TypeName="CarRentModel.WeChatUsers">
+              <MappingFragment StoreEntitySet="WeChatUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="PushMsg" ColumnName="PushMsg" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_OfflineMessage" FunctionName="CarRentModel.Store.SP_OfflineMessage" />
+          <EntitySetMapping Name="RechargeRecord">
+            <EntityTypeMapping TypeName="CarRentModel.RechargeRecord">
+              <MappingFragment StoreEntitySet="RechargeRecord">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ProofImg" ColumnName="ProofImg" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+                <ScalarProperty Name="IsCheck" ColumnName="IsCheck" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="TransferTime" ColumnName="TransferTime" />
+                <ScalarProperty Name="TransferMethod" ColumnName="TransferMethod" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RID" ColumnName="RID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DevicesConfig">
+            <EntityTypeMapping TypeName="CarRentModel.DevicesConfig">
+              <MappingFragment StoreEntitySet="DevicesConfig">
+                <ScalarProperty Name="CmdID" ColumnName="CmdID" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="ShockSens" ColumnName="ShockSens" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CarRentModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="MoneyCount" ColumnName="MoneyCount" />
+                <ScalarProperty Name="ActivationCount" ColumnName="ActivationCount" />
+                <ScalarProperty Name="AllDeviceCount" ColumnName="AllDeviceCount" />
+                <ScalarProperty Name="SuperAdmin" ColumnName="SuperAdmin" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SecondaryEmail" ColumnName="SecondaryEmail" />
+                <ScalarProperty Name="PrimaryEmail" ColumnName="PrimaryEmail" />
+                <ScalarProperty Name="SMSEmail" ColumnName="SMSEmail" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

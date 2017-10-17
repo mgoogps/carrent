@@ -1,0 +1,1374 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mgoo.CarRent.Models</name>
+    </assembly>
+    <members>
+        <member name="P:Mgoo.CarRent.Models.Attribute.MaxAttribute.MaximumValue">
+            <summary>  
+                最大值  
+            </summary>  
+        </member>
+        <member name="M:Mgoo.CarRent.Models.Attribute.MaxAttribute.#ctor(System.Int32)">
+            <summary>  
+                构造函数  
+            </summary>  
+            <param name="minimun"></param>  
+        </member>
+        <member name="M:Mgoo.CarRent.Models.Attribute.MaxAttribute.IsValid(System.Object)">
+            <summary>  
+                验证逻辑  
+            </summary>  
+            <param name="value">需验证的值</param>  
+            <returns>是否通过验证</returns>  
+        </member>
+        <member name="M:Mgoo.CarRent.Models.Attribute.MaxAttribute.FormatErrorMessage(System.String)">
+            <summary>  
+                格式化错误信息  
+            </summary>  
+            <param name="name">属性名称</param>  
+            <returns>错误信息</returns>  
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Attribute.MinAttribute.MinimumValue">
+            <summary>  
+                最小值  
+            </summary>  
+        </member>
+        <member name="M:Mgoo.CarRent.Models.Attribute.MinAttribute.#ctor(System.Int32)">
+            <summary>  
+                构造函数  
+            </summary>  
+            <param name="minimun"></param>  
+        </member>
+        <member name="M:Mgoo.CarRent.Models.Attribute.MinAttribute.IsValid(System.Object)">
+            <summary>  
+                验证逻辑  
+            </summary>  
+            <param name="value">需验证的值</param>  
+            <returns>是否通过验证</returns>  
+        </member>
+        <member name="M:Mgoo.CarRent.Models.Attribute.MinAttribute.FormatErrorMessage(System.String)">
+            <summary>  
+                格式化错误信息  
+            </summary>  
+            <param name="name">属性名称</param>  
+            <returns>错误信息</returns>  
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.ExceptionID">
+            <summary>
+            属性报警消息ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.Type">
+            <summary>
+            属性报警消息类型
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.Created">
+             <summary>
+            属性 报警时间
+             </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.DeviceID">
+            <summary>
+             属性 设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.UserID">
+            <summary>
+            属性 用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.DeviceName">
+             <summary>
+            属性 设备名称
+             </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Message.SerialNumber">
+             <summary>
+            属性 设备IMEI号
+             </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.DeviceID">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.SerialNumber">
+            <summary>
+            设备IMEI号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.LastCommunication">
+            <summary>
+            与平台通信时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.DataContext">
+            <summary>
+            第一位数   0 - ACC关    ，1 - ACC开
+            第二位数   0 - 撤防     ，1 - 设防
+            第三位数   0 - 未刹车   ，1 - 刹车
+            第四位数   0 - 主电断开 ，1 - 主电连接
+            如果有第五位数，则代表设备电量(没有可忽略)。 
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.Speed">
+            <summary>
+            当前速度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.GroupID">
+            <summary>
+            分组ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.HireExpireDate">
+            <summary>
+            到期时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.StopTime">
+            <summary>
+            停止时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.ExceptionCount">
+            <summary>
+            该设备未读报警条数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.Lat">
+            <summary>
+            设备当前位置的纬度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.Lng">
+            <summary>
+            设备当前位置的经度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.Model">
+            <summary>
+            设备型号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.Status">
+            <summary>
+            当前状态(1:已租，0:未租)
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.GpsStatus">
+            <summary>
+            GPS设备的状态 (1=在线，2=离线，3=未激活、4=已过期) 
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.OffLineMinute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.GpsStatusMinute">
+            <summary>
+            GPS设备当前状态的持续时间(分钟)
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DeviceList.IsStop">
+            <summary>
+            是否停止 0：运动，1：停止
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.DeviceID">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.SerialNumber">
+            <summary>
+            IMEI号
+            </summary>
+        </member>
+        <member name="F:Mgoo.CarRent.Models.Entity.Monitor.DevicesList._DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.GroupID">
+            <summary>
+            分组ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.GroupName">
+            <summary>
+            分组名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.UserID">
+            <summary>
+            所属用户id
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.Username">
+            <summary>
+            所属用户名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.LastCommunication">
+            <summary>
+            通信时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Monitor.DevicesList.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.ParentID">
+            <summary>
+            父级ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.LoginName">
+            <summary>
+            登录名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.Password">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.UserType">
+            <summary>
+            用户类型
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.Gender">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Entity.Users.Created">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle">
+            <summary>
+            添加电子围栏的参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.name">
+            <summary>
+            电子围栏名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.radius">
+            <summary>
+            半径
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.deviceid">
+            <summary>
+            设备ID(如果 deviceid为空或者为0，则为该用户所有设备设置围栏)
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.latitude">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.longitude">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle.description">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.name">
+            <summary>
+            围栏名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.userid">
+            <summary>
+            围栏绑定的用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.south_west_lat">
+            <summary>
+            西南角的纬度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.south_west_lng">
+            <summary>
+            西南角的经度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.north_east_lat">
+            <summary>
+            东北角的纬度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.north_east_lng">
+            <summary>
+            东北角的经度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.bounds">
+            <summary>
+            界限的经纬度,最少三组经纬度,格式：lat,lng|lat,lng|lat,lng      举例：41.489715,123.50642|41.483577,123.493149|41.467728,123.481067|41.474391,123.456519
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon.description">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.PDevicesByDeviceID">
+            <summary>
+            当接口只有一个deviceID的时候
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.PDevicesByDeviceID.deviceid">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.P_CarRequest">
+            <summary>
+            申请租车参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_CarRequest.deviceid">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_CarRequest.phone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_CarRequest.code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.PGetCarRequest">
+            <summary>
+            获取申请租车列表 参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.PGetCarRequest.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.P_GetDeviceList">
+            <summary>
+            查询设备列表分页需要的参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_GetDeviceList.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_GetDeviceList.start_date">
+            <summary>
+            查询的开始时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_GetDeviceList.end_date">
+            <summary>
+            查询的结束时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_GetDeviceList.keyword">
+            <summary>
+            查询的关键字
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.P_UpdateDeviceInfo">
+            <summary>
+            修改设备信息
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_UpdateDeviceInfo.deviceid">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_UpdateDeviceInfo.devicename">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_UpdateDeviceInfo.groupid">
+            <summary>
+            分组ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_UpdateDeviceInfo.description">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.P_DelDevice">
+            <summary>
+            删除一条设备信息记录页面传递的参数
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice">
+            <summary>
+            添加设备信息
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice.groupid">
+            <summary>
+            分组ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice.imei">
+            <summary>
+            设备IMEI号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice.phonenumber">
+            <summary>
+            流量卡号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice.devicename">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice.remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_Import.FileName">
+            <summary>
+            上传的文件
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Devices.P_DelsDevices">
+            <summary>
+            批量删除ID（1，4，5格式）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Devices.P_DelsDevices.deviceid">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.PLogin">
+            <summary>
+            登录参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PLogin.login_name">
+            <summary>
+            登录名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PLogin.login_password">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PLogin.identifies">
+            <summary>
+            标识符（全部大写）
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.PRegister">
+            <summary>
+            注册参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PRegister.phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PRegister.loginname">
+            <summary>
+            登录名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PRegister.password">
+            <summary>
+            登陆密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PRegister.confirmpwd">
+            <summary>
+            确认密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PRegister.username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.PRegister.code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_SendCode">
+            <summary>
+            发送短信
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_SendCode.phone">
+            <summary>
+            接收短信的手机号码，号码前需要加国际区号（例:8613888888888, 86是中国的国际区号）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_SendCode.type">
+            <summary>
+            类型 1： 注册,2：申请租车
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.PLogout">
+            <summary>
+            注销登录
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_OnlyOneID">
+            <summary>
+            适用于参数只有一个ID的
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PTranslate.coords">
+            <summary>
+            源坐标	
+            格式: 经度,纬度
+            举例: 114.21892734521,29.575429778924
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PTranslate.from">
+            <summary>
+            源坐标类型
+            1：原始坐标系，wgs84;
+            2：高德坐标系，GCJ02;
+            3：百度坐标系，BD09;
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PTranslate.to">
+            <summary>
+            目的坐标类型
+            1：原始坐标系，wgs84;
+            2：高德坐标系，GCJ02;
+            3：百度坐标系，BD09;
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PGetAddress.lat">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PGetAddress.lng">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PGetAddress.language">
+            <summary>
+            返回值的语言
+            默认是：zh-CN 中文简体
+            如果是用Google获取国外的地址，需要填此参数 
+            参见： https://developers.google.com/maps/faq#languagesupport
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Position.PGetAddress.type">
+            <summary>
+            BAIDU,GOOGLE,AMAP
+            默认是：AMAP
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Message.P_GetMessageList">
+            <summary>
+            查询报警消息列表分页需要的参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_GetMessageList.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_GetMessageList.start_date">
+            <summary>
+            查询的开始时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_GetMessageList.end_date">
+            <summary>
+            查询的结束时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_GetMessageList.keyword">
+            <summary>
+            查询的关键字
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Message.P_DelMessage">
+            <summary>
+            删除一条消息记录
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_DelMessage.exceptionid">
+            <summary>
+            报警消息ID
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Message.P_DelsMessages">
+            <summary>
+            批量删除消息记录
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_DelsMessages.id">
+            <summary>
+            ID多条消息记录，以逗号分隔
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_MessageCount.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_MessageCount.start">
+            <summary>
+            起始时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Message.P_MessageCount.end">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Weixin.P_GetDeviceInfo.deviceid">
+            <summary>
+            设备id
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Weixin.P_GetDeviceInfo.openid">
+            <summary>
+            微信分配的唯一的openid
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_UsersByUserID">
+            <summary>
+            根据用户ID获取用户列表的参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UsersByUserID.userid">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply">
+            <summary>
+            充值申请接口参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply.proof">
+            <summary>
+            证明，收据（base64格式）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply.money">
+            <summary>
+            充值金额，单位为马来西亚最小面值：Cents(相当于RMB的分)，页面显示用Ringgit(相当于RMB的元)，1 Ringgit=100 Cents
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply.transfer_time">
+            <summary>
+            转账时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply.transfer_method">
+            <summary>
+            交易方式（参考值：ATM ，Online transfer ，Counter）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply.payment_method">
+            <summary>
+            充值银行（参考值：MayBank，PublicBank）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply.remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList">
+            <summary>
+            获取充值申请列表
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList.type">
+            <summary>
+            默认是2，查询所有的，1：查询已审核，0：未审核
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList.start_time">
+            <summary>
+            开始时间（transfer time）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList.end_time">
+            <summary>
+            开始时间（transfer time）
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList.transfer_method">
+            <summary>
+            转账方法（参考值：ATM ，Online transfer ，Counter）
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo">
+            <summary>
+            修改用户信息的参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo.username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo.phone">
+            <summary>
+            联系电话
+            </summary> 
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo.price">
+            <summary>
+            租车的单价，多少钱一个小时，单位：Cents(相当于RMB的分)，页面显示用Ringgit(相当于RMB的元)，1 Ringgit=100 Cents
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo.contact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo.email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo.address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdatePwd">
+            <summary>
+            修改用户密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdatePwd.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdatePwd.old_userpwd">
+            <summary>
+            原始密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdatePwd.new_userpwd">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_UpdatePwd.confirm_userpwd">
+            <summary>
+            确认密码
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_GetUserListPage">
+            <summary>
+            获取用户列表分页功能 查询需要的字段
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetUserListPage.start_date">
+            <summary>
+            根据创建时间查询的开始时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetUserListPage.end_date">
+            <summary>
+            根据创建时间查询的结束时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_GetUserListPage.keyword">
+            <summary>
+            关键字
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers">
+            <summary>
+            添加子用户信息
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.username">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.account">
+            <summary>
+            登陆名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.contact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.phone">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.price">
+            <summary>
+            租车的单价，多少钱一个小时，单位：Cents(相当于RMB的分)，页面显示用Ringgit(相当于RMB的元)，1 Ringgit=100 Cents
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers.email">
+            <summary>
+            email
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_DelUser">
+            <summary>
+            删除子用户
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_DelUser.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_DelsUsers">
+            <summary>
+            批量删除用户信息
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_DelsUsers.id">
+            <summary>
+            用户ID 3,4,5格式
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Parameter.P_Users.P_DelsApplications">
+            <summary>
+            批量删除用户充值凭证记录
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Parameter.P_Users.P_DelsApplications.id">
+            <summary>
+            RID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.RGetGroupList.GroupID">
+            <summary>
+            分组ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.RGetGroupList.GroupName">
+            <summary>
+            分组名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.RGetGroupList.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result">
+            <summary>
+            设备分页列表Result数据
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.list">
+            <summary>
+            返回数据的集合
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List">
+            <summary>
+            列表属性说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.DeviceID">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.PhoneNum">
+            <summary>
+            流量卡号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.GroupName">
+            <summary>
+            分组名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.SerialNumber">
+            <summary>
+            设备IMEI
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.Created">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.UserID">
+            <summary>
+            所属用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.UserName">
+            <summary>
+            所属用户名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.SortOrder">
+            <summary>
+            多少分钟算离线
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.LastCommunication">
+            <summary>
+            通信时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDeviceListPage.GetDeviceListPage_Result.GetDeviceListPage_List.RowIndex">
+            <summary>
+            行号
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result">
+            <summary>
+            根据设备ID获取设备信息返回值
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.DeviceID">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.SerialNumber">
+            <summary>
+            设备IMEI
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.LastCommunication">
+            <summary>
+            通信时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.Course">
+            <summary>
+            方向角
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.IsStop">
+            <summary>
+            是否是运动的
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.DataContext">
+            <summary>
+            GPS状态
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.Speed">
+            <summary>
+            速度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.Lat">
+            <summary>
+            设备当前位置的纬度
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Devices.GetDevice_Result.Lng">
+            <summary>
+            设备当前位置的经度
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result">
+            <summary>
+            报警消息返回的参数
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.list">
+            <summary>
+            返回数据的集合
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List">
+            <summary>
+            列表属性说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.ExceptionID">
+            <summary>
+            报警消息ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.UserID">
+            <summary>
+             用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.UserName">
+            <summary>
+             用户名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.SerialNumber">
+            <summary>
+            IMEI
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.PhoneNum">
+            <summary>
+            流量卡号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.Message">
+            <summary>
+            报警类型
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.Created">
+            <summary>
+            报警时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Message.GetMessageListPage_Result.GetMessageListPage_List.RowIndex">
+            <summary>
+            行号
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Paging">
+            <summary>
+            返回数据如果是分页，则继承此类
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Paging.total">
+            <summary>
+            一共多少条数据
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Paging.pages">
+            <summary>
+            一共多少页
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result">
+            <summary>
+            result数据.
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.list">
+            <summary>
+            返回数据的集合
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList">
+            <summary>
+            列表属性说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.RowIndex">
+            <summary>
+            行号
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.RID">
+            <summary>
+            返回id
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.IsCheck">
+            <summary>
+            是否审核
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.PaymentMethod">
+            <summary>
+            交易银行
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.TransferMethod">
+            <summary>
+            交易方法
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.Proof">
+            <summary>
+            交易凭证
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.TransferTime">
+            <summary>
+            交易时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.UserName">
+            <summary>
+            申请用户名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.UserID">
+            <summary>
+            申请用户的ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.Fee">
+            <summary>
+            费用
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetRechargeApplyList_Result.GetRechargeApplyList_PageList.Created">
+            <summary>
+            提交时间
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result">
+            <summary>
+            查询分页用户列表返回的数据说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.list">
+            <summary>
+            返回数据的集合
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List">
+            <summary>
+            列表属性说明
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.UserID">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.LoginName">
+            <summary>
+            登录名
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.Contact">
+            <summary>
+            联系人
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.Created">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.AllDeviceCount">
+            <summary>
+            一共有多少台设备
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.CellPhone">
+            <summary>
+            联系号码
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.Price">
+            <summary>
+            租车单价
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Users.GetUsersListPage_Result.GetUsersListPage_List.RowIndex">
+            <summary>
+            行号
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Login">
+            <summary>
+            登录返回值
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.Login_Result.url">
+            <summary>
+            要跳转的URL
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.Login_Result.userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.Login_Result.token">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.Login_Result.username">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceList">
+            <summary>
+            获取电子围栏列表接口返回值
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceList.GeofenceID">
+            <summary>
+            围栏ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceList.Created">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceList.FenceName">
+            <summary>
+            围栏名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceList.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result">
+            <summary>
+            根据ID获取围栏信息的返回数据
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.GeofenceID">
+            <summary>
+            围栏ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.FenceName">
+            <summary>
+            围栏名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.FenceType">
+            <summary>
+            围栏类型 1：多边形，0：圆形
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.Bounds">
+            <summary>
+            边界坐标，格式：lat,lng|lat,lng|lat,lng  举例：41.489715,123.50642|41.483577,123.493149|41.467728,123.481067|41.474391,123.456519
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.Models.Return.R_Geofence.R_GetGeofenceByID.R_GetGeofenceByID_Result.Created">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+    </members>
+</doc>

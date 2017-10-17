@@ -1,0 +1,27 @@
+.mg-row {
+  width:100%;
+  border:1px solid red;
+  padding:0;
+  white-space:nowrap;
+  text-align:left
+}
+.mg-row div {
+    border:1px solid blue
+}
+.mg-row .mg-row-cell-3 {
+    width:33.33%;
+    float:left;
+}
+.mg-row .mg-row-cell-2 {
+    width:20.0%;
+    float:left;
+}
+.mg-row .mg-row-cell-4 {
+    width:40.0%;
+    float:left;
+}
+
+.mg-row .mg-row-cell-5 {
+    width:50.0%;
+    float:left;
+}

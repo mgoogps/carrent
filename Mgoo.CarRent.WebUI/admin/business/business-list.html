@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>商家列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+
+</head>
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <!--头部搜索-->
+                <section class="panel panel-padding">
+                    <form class="layui-form" data-params='{"dataName":"businesslist","action":"list"}' action="/api/Users/GetUserList/page" method="get">
+                        <div class="layui-form">
+                            
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input start-date" name="start_date" placeholder="Starting time">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input end-date" name="end_date" placeholder="End time">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="Keywords">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button lay-submit class="layui-btn" lay-filter="search">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!--列表-->
+                <section class="panel panel-padding">
+                    <div class="group-button">
+                        <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-params='{"url": "/api/Users/DelsUsersInfo","action":"del","dataName":"businesslist","key":"id"}'>
+                            <i class="iconfont">&#xe626;</i> Delete
+                        </button>
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"sell=1","dataName":"businesslist","key":"id"}'>
+                            <i class="iconfont">&#xe603;</i> Edit
+                        </button>-->
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"switch=1","dataName":"businesslist","key":"id"}'>
+                            <i class="layui-icon">&#x1005;</i> 审核
+                        </button>-->
+                        <button class="layui-btn layui-btn-small modal" data-params='{"content": "edit-business.html","type":"2","area":"700px,550px", "title": "add business","full":"false","key":"id","scroll":false,"pars":"add"}'>
+                            <i class="iconfont">&#xe649;</i> Add 
+                        </button>
+                    </div>
+                    <div class="layui-form">
+                        <table id="example" class="layui-table jq-even" data-params='{"dataName":"businesslist","key":"id"}'>
+                            <thead>
+                                <tr>
+                                    <th width="30"><input type="checkbox" id="checkall" data-name="id" lay-filter="check" lay-skin="primary"></th>
+                                    <th width="80">No.</th>
+                                    <th>Name</th>
+                                    <th>Account</th>
+                                    <th>Contact</th>
+                                    <th>Phone</th>
+                                    <th>DeviceCount</th>
+                                    <th>ActivationCount</th>
+                                    <th>Create</th> 
+                                    <!--<th>支付方式</th>-->
+                                    <th>Address</th>
+                                    <!--<th width="80">审核</th>-->
+                                    <th width="142">Operate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-right" id="page"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+  
+
+</body>
+
+<script id="list-tpl" type="text/html" data-params='{"url":"/api/Users/GetUserList/page","dataName":"businesslist","pageid":"#page"}'>
+
+    {{# layui.each(d.list, function(index, item){ }}
+    <tr>
+        <td><input type="checkbox" name="id" value="{{ item.UserID}}" lay-skin="primary"></td>
+        <td>{{ item.RowIndex}}</td>
+        <td>{{item.UserName}} </td>
+        <td>{{ item.LoginName }}</td>
+        <td>{{ item.Contact }}</td>
+        <td>{{item.CellPhone}}</td>
+        <td>{{ item.AllDeviceCount}} </td>
+        <td>M.＄{{ item.Price/100}}/hour.</td>
+        <td>{{ item.Created}}  </td>
+        <td>{{ item.Address}}  </td>
+        <td>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-mini modal" data-params='{"content": "edit-business.html","type":"2","area":"700px,550px", "title": "edit bussiness","full":"false","key":"id","scroll":false,"pars":"{{ item.UserID }},{{ item.UserName }}"}'>
+                    <i class="iconfont">&#xe653;</i>edit
+                </button>
+                <button class="layui-btn layui-btn-mini layui-btn-danger ajax" data-params='{"url": "/api/Users/DelUserInfo","key":"userid","data":"userid={{ item.UserID }}","action":"del"}'>
+                    <i class="iconfont">&#xe626;</i>delete
+                </button>
+            </div>
+        </td>
+    </tr>
+    {{# }); }}
+</script>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"+new Date().getTime()
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader',
+        jqcitys: "jqmodules/jqcitys",
+        mgajax: "../../Assets/js/mgajax"
+    })
+</script>
+<script>
+  
+    layui.use(['list', 'layer','mgajax', 'jquery'], function () {
+       // var $ = layui.jquery;
+        //layer.open({
+        //    type: 1,
+        //    content: $('.add-subcat') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+        //});
+    })
+
+   
+</script>
+</html>

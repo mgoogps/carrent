@@ -1,0 +1,435 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mgoo.CarRent.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Mgoo.CarRent.WebApi.AuthFilterAttribute">
+            <summary>  
+            验证模型过滤器、Authorization验证、Token验证
+            </summary>  
+        </member>
+        <member name="P:Mgoo.CarRent.WebApi.AuthFilterAttribute.AllowAnonymous">
+            <summary>   
+            匿名可访问,如果设置为true，则不需要加Authorization也可以访问
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.WebApi.AuthFilterAttribute.OnlyLogin">
+            <summary>
+            登录用户就可以访问
+            </summary>
+        </member>
+        <member name="P:Mgoo.CarRent.WebApi.AuthFilterAttribute.PowerName">
+            <summary>
+            使用的资源权限名，比如多个接口可以使用同一个资源的权限，默认是/ControllerName/ActionName
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.AuthFilterAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            过滤器
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.Controllers.DevicesController">
+            <summary>
+            有关设备操作的API
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.GetDeviceList(System.Int32)">
+            <summary>
+            获取用户下的所有设备列表
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns>   </returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.GetDeviceList(Mgoo.CarRent.Models.Parameter.P_Devices.P_GetDeviceList)">
+            <summary>
+            通过分页获取设备列表
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.GetDeviceByDeviceID(System.Int32)">
+            <summary>
+            根据设备ID获取设备信息
+            </summary>
+            <param name="deviceid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.CarRequest(Mgoo.CarRent.Models.Parameter.P_Devices.P_CarRequest)">
+            <summary>
+            租车申请 (顺序： 用户先 申请租车 > 商家APP获取租车列表 > 确认租车(开始计费) > 结束租车(结算费用))
+            </summary>
+            <param name="pars">请求参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.GetCarRequestList(System.Int32)">
+            <summary>
+            获取租车申请列表 (顺序： 用户先 申请租车 > 商家APP获取租车列表 > 确认租车(开始计费) > 结束租车(结算费用))
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.StartRental(System.Int32)">
+            <summary>
+            确认租车(开始计时收费) (顺序： 用户先 申请租车 > 商家APP获取租车列表 > 确认租车(开始计费) > 结束租车(结算费用))
+            </summary>
+            <param name="leaseid">租车申请列表的id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.EndRental(System.Int32)">
+            <summary>
+            结束租车（结算费用） (顺序： 用户先 申请租车 > 商家APP获取租车列表 > 确认租车(开始计费) > 结束租车(结算费用))
+            </summary>
+            <param name="deviceid">设备ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.GetDeviceInfo(System.Int32)">
+            <summary>
+            根据设备ID查询设备信息
+            </summary>
+            <param name="deviceid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.UpdateDeviceInfo(Mgoo.CarRent.Models.Parameter.P_Devices.P_UpdateDeviceInfo)">
+            <summary>
+            修改设备信息
+            </summary>
+            <param name="pars"></param>
+            <returns></returns> 
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.DelDevice(Mgoo.CarRent.Models.Parameter.P_Devices.P_DelDevice)">
+            <summary>
+            删除一条设备信息记录
+            </summary>
+            <param name="par"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.DelsDevices(Mgoo.CarRent.Models.Parameter.P_Devices.P_DelsDevices)">
+            <summary>
+            批量删除设备
+            </summary>
+            <param name="par"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.DevicesController.AddDevice(Mgoo.CarRent.Models.Parameter.P_Devices.P_AddDevice)">
+            <summary>
+            添加设备
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.Controllers.GeofenceController">
+            <summary>
+            有关电子围栏的一些操作API
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GeofenceController.AddGeofenceCircle(Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofenceCircle)">
+             <summary>
+            添加电子围栏（圆形） 
+             </summary>
+             <param name="pars"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GeofenceController.AddGeofencePolygon(Mgoo.CarRent.Models.Parameter.PGeofence.AddGeofencePolygon)">
+            <summary>
+            添加电子围栏（多边形）
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GeofenceController.GetGeofenceList(System.Int32)">
+            <summary>
+            查询围栏列表
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GeofenceController.DelGeofence(System.Int32)">
+            <summary>
+            根据围栏ID删除围栏
+            </summary>
+            <param name="fenceid">围栏ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GeofenceController.GetGeofenceByID(System.Int32)">
+            <summary>
+            根据围栏ID查询围栏信息
+            </summary>
+            <param name="fenceid">围栏ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GeofenceController.GetGeofenceByUserID(System.Int32)">
+            <summary>
+            根据用户ID查询围栏列表
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GroupsController.GetGroupList(System.Int32)">
+            <summary>
+            查询分组列表
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.GroupsController.GetGroupListSimple">
+            <summary>
+            加载下拉框分组内容
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.MessageController.GetMessageList(Mgoo.CarRent.Models.Parameter.P_Message.P_GetMessageList)">
+            <summary>
+            通过分页获取报警消息列表
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.MessageController.DelMessage(Mgoo.CarRent.Models.Parameter.P_Message.P_DelMessage)">
+            <summary>
+            删除一条报警消息
+            </summary>
+            <param name="par"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.MessageController.DelsMessages(Mgoo.CarRent.Models.Parameter.P_Message.P_DelsMessages)">
+            <summary>
+            批量报警删除消息记录
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.MessageController.GetMessageCount(Mgoo.CarRent.Models.Parameter.P_Message.P_MessageCount)">
+            <summary>
+            查询今日一共多少条报警消息
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.MonitorController.GetDevicesList(System.Int32)">
+            <summary>
+            根据用户ID获取设备列表
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.Controllers.PositionController">
+            <summary>
+            获取地址，坐标转换
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.PositionController.Translate(Mgoo.CarRent.Models.Parameter.P_Position.PTranslate)">
+            <summary>
+            经纬度转换
+            </summary>
+            <param name="position"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.PositionController.GetAddress(Mgoo.CarRent.Models.Parameter.P_Position.PGetAddress)">
+            <summary>
+            获取地址
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.PositionController.InOutChina(System.Double,System.Double)">
+            <summary>
+            判断坐标是否在中国境内
+            </summary>
+            <param name="lat"></param>
+            <param name="lng"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.Controllers.UpdateController">
+            <summary>
+            App检查更新
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UpdateController.Wgt(System.String,System.String)">
+            <summary>
+            APP差量更新检查
+            </summary>
+            <param name="version">版本号</param>
+            <param name="package">包名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UpdateController.Apk(System.String,System.String)">
+            <summary>
+            Android应用检查更新
+            </summary>
+            <param name="version">版本号</param>
+            <param name="package">包名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.WeixinController.GetDeviceInfo(Mgoo.CarRent.Models.Parameter.P_Weixin.P_GetDeviceInfo)">
+            <summary>
+            获取设备信息
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.Controllers.LoginController">
+            <summary>
+            包含登录、注册、登出 等API
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.LoginController.SystemLogin(Mgoo.CarRent.Models.Parameter.PLogin)">
+            <summary>
+            登录接口
+            </summary>
+            <param name="pars">登录参数</param> 
+            <returns>  </returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.LoginController.Logout">
+            <summary>
+            退出登录接口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.LoginController.Register(Mgoo.CarRent.Models.Parameter.PRegister)">
+            <summary>
+            注册接口
+            </summary>
+            <param name="reg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.LoginController.SendCode(Mgoo.CarRent.Models.Parameter.P_SendCode)">
+            <summary>
+            发送手机短信
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.Controllers.UsersController">
+            <summary>
+            有关用户操作的API
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.GetUserList(System.Int32)">
+            <summary>
+            获取当前用户下的所有用户
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.GetUserList(Mgoo.CarRent.Models.Parameter.P_Users.P_GetUserListPage)">
+            <summary>
+            获取当前用户下的所有用户
+            </summary>
+            <param name="pars">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.GetUserListSimple">
+            <summary>
+            查询当前用户下所有的子用户 ，只返回，用户名和用户id两个字段
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.GetUsersInfo(System.Int32)">
+            <summary>
+            根据ID获取用户信息
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.RechargeApply(Mgoo.CarRent.Models.Parameter.P_Users.P_RechargeApply)">
+            <summary>
+            充值申请
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.GetRechargeApplyList(Mgoo.CarRent.Models.Parameter.P_Users.P_GetRechargeApplyList)">
+            <summary>
+            获取充值申请记录
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.DeleteRecharge(System.Int32)">
+            <summary>
+            删除单条申请记录
+            </summary>
+            <param name="id"> 申请记录的ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.UpdateUsersInfo(Mgoo.CarRent.Models.Parameter.P_Users.P_UpdateUsersInfo)">
+            <summary>
+            修改用户信息
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.ProofReview(System.Int32)">
+            <summary>
+            通过审核
+            </summary>
+            <param name="id"> 申请记录的ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.UpdateUserPwd(Mgoo.CarRent.Models.Parameter.P_Users.P_UpdatePwd)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.AddUsers(Mgoo.CarRent.Models.Parameter.P_Users.P_AddUsers)">
+            <summary>
+            添加子用户
+            </summary>
+            <param name="pars"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.DelUserInfo(Mgoo.CarRent.Models.Parameter.P_Users.P_DelUser)">
+            <summary>
+            删除用户信息
+            </summary>
+            <param name="par"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.DelsUsersInfo(Mgoo.CarRent.Models.Parameter.P_Users.P_DelsUsers)">
+            <summary>
+            批量删除用户信息
+            </summary>
+            <param name="par"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.Controllers.UsersController.DelsApplications(Mgoo.CarRent.Models.Parameter.P_Users.P_DelsApplications)">
+            <summary>
+            批量删除用户充值凭证
+            </summary>
+            <param name="par"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mgoo.CarRent.WebApi.WebApiBaseClass">
+            <summary>
+            WebApi基类
+            </summary>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.WebApiBaseClass.ApiAsync``1(``0,System.Func{``0,System.Threading.Tasks.Task{Mgoo.CarRent.Interface.IApiResult}})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="entity"></param>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.WebApiBaseClass.ApiAsync(System.Func{System.Threading.Tasks.Task{Mgoo.CarRent.Interface.IApiResult}})">
+            <summary>
+            
+            </summary>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mgoo.CarRent.WebApi.WebApiBaseClass.Accreditation(System.Net.Http.Headers.HttpRequestHeaders)">
+            <summary>
+            验证
+            </summary>
+            <param name="headers"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

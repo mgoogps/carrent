@@ -286,3 +286,8 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/Mgoo.CarRent.WebUI/Web.Release.config
+/Mgoo.CarRent.WebUI/Web.Debug.config
+/Mgoo.CarRent.WebUI/Web.config
+/Mgoo.CarRent.DAL/App.Config
+/Mgoo.CarRent.BLL/App.config

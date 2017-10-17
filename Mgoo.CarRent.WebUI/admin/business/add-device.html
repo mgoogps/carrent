@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+
+</head>
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+                <section class="panel panel-padding">
+                    <!--增加form表单-->
+                    <form id="form2" class="layui-form" data-params='{"dataName":"adddevice","action":"nodo"}' action="/api/Devices/AddDevice" method="post" onsubmit="return check();" >
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Agent</label>
+                            <div class="layui-input-inline">
+                                <select name="userid" id="selectUsers" lay-verify="" lay-search bind-params='{"url":"/api/Users/GetUserListSimple","async":false,"data":""}' bind-value="UserID" bind-text="UserName">
+                                    <option value="">please choose</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IMEI</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="imei" id="add_imeinumber" required jq-verify="required" jq-error="please enter imei" placeholder="please enter imei" autocomplete="off" class="layui-input ">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">GroupName</label>
+                            <div class="layui-input-inline">
+                                <select name="groupid" id="selectGroups" lay-verify="" lay-search bind-params='{"url":"/api/Groups/GetGroupListSimple","data":""}' bind-value="GroupID" bind-text="GroupName">
+                                    <option value="">please choose</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Phone Number</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="phonenumber" id="add_phonenumber" required jq-verify="required" jq-error="please enter phonenumber" placeholder="please enter DeviceName" autocomplete="off" class="layui-input ">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">DeviceName</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="devicename" id="add_devicename" required jq-verify="required" jq-error="please enter DeviceName" placeholder="please enter DeviceName" autocomplete="off" class="layui-input ">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">Remark</label>
+                            <div class="layui-input-block">
+                                <textarea name="remark" placeholder="Remark" id="add_remark" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" jq-submit jq-filter="submit">Submit</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
+                            </div>
+                        </div>
+                    </form>             
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        //webuploader: 'lib/webuploader',
+        //jqcitys: "jqmodules/jqcitys",
+        mgajax: "../../Assets/js/mgajax"
+    })
+</script>
+<script>
+    function load() {
+        layui.use(['simpleform', 'mgajax', 'form'], function () {
+            var com = layui.mgajax;
+            var $ = layui.jquery;
+            var form = layui.jqform;
+           
+        });
+    }
+
+
+</script>

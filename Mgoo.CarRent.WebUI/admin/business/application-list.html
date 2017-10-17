@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carent</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=v3.3.7" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/font/iconfont.css?v=1.0.1" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/layui.css?v=1.0.9" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v1.4.0" media="all">
+
+</head>
+
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <!--头部搜索-->
+                <section class="panel panel-padding">
+                    <form class="layui-form" data-params='{"dataName":"applicationlist","action":"list","data":""}' action="/api/Users/GetRechargeApplyList" method="get">
+                        <div class="layui-form">
+                            <div class="layui-inline">
+                                <select name="city" >
+                                    <option value="">please choose payment method</option>
+                                    <option value="ATM transfer">ATM transfer</option>
+                                    <option value="online bank transfer">online bank transfer</option>
+                                    <option value="counter transfer">counter transfer</option>
+                                </select>
+                            </div>
+                            <div class="layui-inline">
+                                <select name="status" >
+                                    <option value="">please choose</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Check">Check</option>
+                                </select>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input start-date" name="start_date" placeholder="transfer starting time">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input class="layui-input end-date" name="end_date" placeholder="transfer end time">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input class="layui-input" name="keyword" placeholder="keywords">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button lay-submit class="layui-btn" lay-filter="search">search</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!--列表-->
+                <section class="panel panel-padding">
+                    <div class="group-button">
+                        <button class="layui-btn layui-btn-small layui-btn-danger ajax-all" data-params='{"url": "/api/Users/DelsApplications","action":"del","dataName":"applicationlist","key":"id"}'>
+                            <i class="iconfont">&#xe626;</i> delete
+                        </button>
+                        <!--<button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"sell=1","dataName":"applicationlist","key":"id"}'>
+                            <i class="iconfont">&#xe603;</i> 上架
+                        </button>-->
+                        <button class="layui-btn layui-btn-small layui-btn-normal ajax-all" data-params='{"url": "./data/success.json","data":"switch=1","dataName":"applicationlist","key":"id"}'>
+                            <i class="layui-icon">&#x1005;</i> Check
+                        </button>
+                        <!--<button class="layui-btn layui-btn-small modal" data-params='{"content": "product-add.html", "title": "添加文章","type":"2"}'>
+                            <i class="iconfont">&#xe649;</i> add
+                        </button>-->
+                    </div>
+                    <div class="layui-form">
+                        <table id="example" class="layui-table jq-even" data-params='{"dataName":"applicationlist","key":"id"}'>
+                            <thead>
+                                <tr>
+                                    <th width="30"><input type="checkbox" id="checkall" data-name="id" lay-filter="check" lay-skin="primary"></th>
+                                    <th width="60">No.</th>
+                                    <th>Agent</th>
+                                    <th width="120">proof/receipt</th>
+                                    <th>money</th>
+                                    <th>transfer method</th>
+                                    <th>transfer time</th> 
+                                    <th>payment method</th> 
+                                    <th>remark</th>  
+                                    <th width="142">operate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-right" id="page"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script id="list-tpl" type="text/html" data-params='{"url":"/api/Users/GetRechargeApplyList","dataName":"applicationlist","pageid":"#page","server":true}'>
+
+     {{#
+            var photos = {};
+            photos.title = "";
+            photos.id = "123";
+            photos.start = 0;
+            photos.data = [];  ;
+            window.photos = photos;
+        layui.each(d.list, function(index, item){ 
+            photos.data.push({alt:item.UserName,pid:111,src:item.Proof,thumb:item.Proof});
+    }}
+    <tr> 
+        <td><input type="checkbox" name="id" value="{{ item.RID}}" lay-skin="primary"></td>
+        <td>{{ item.RowIndex}}</td>
+        <td>{{ item.UserName}}</td>
+        <td>
+            <div class="img proof" onclick="proofClick(this)">
+                <img src="{{ item.Proof }}" id="proof{{item.RID}}" alt="" class="img-thumbnail">
+            </div>
+        </td>
+        <td>MYR{{ item.Fee/100 }}</td>
+        <td>{{ item.TransferMethod }}</td>
+        <td>{{ item.TransferTime }}</td>
+        <td>{{ item.PaymentMethod }}</td> 
+        <td>{{ item.Remark || '' }} </td>
+        <!--<td><input type="text" class="layui-input ajax-blur" name="order" value="{{ item.RID}}" data-params='{"url":"../data/success.json","data":"id={{ item.RID}}"}'> </td>-->
+        <!--<td><input type="checkbox" name="switch" lay-skin="switch" value="1" lay-text="check|pending" {{#if (item.IsCheck){ }} checked="checked" {{# } }} lay-filter="ajax" data-params='{"url":"/api/Users/ProofReview","data":"rid={{ item.RID}}","key":"application-switch"}'> </td>-->
+        <td>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-mini layui-btn-normal ajax" data-params='{"url": "/api/Users/ProofReview","data":"id={{ item.RID }}","key":"rid","action":"del"}'>
+                    <i class="iconfont">&#xe653;</i>Check
+                </button>
+                <button class="layui-btn layui-btn-mini layui-btn-danger ajax" data-params='{"url": "/api/Users/DeleteRecharge","data":"id={{ item.RID }}","action":"del"}'>
+                    <i class="iconfont">&#xe626;</i>delete
+                </button>
+            </div>
+        </td>
+    </tr>
+    {{# }); }}
+</script>
+<script src="../js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../js/',
+        version: "2.0.0"
+    }).extend({
+        jqelem: 'jqmodules/jqelem',
+        jqmenu: 'jqmodules/jqmenu',
+        tabmenu: 'jqmodules/tabmenu',
+        jqajax: 'jqmodules/jqajax',
+        jqtable: 'jqmodules/jqtable',
+        jqbind: 'jqmodules/jqbind',
+        jqdate: 'jqmodules/jqdate',
+        jqtags: 'jqmodules/jqtags',
+        jqform: 'jqmodules/jqform',
+        echarts: 'lib/echarts',
+        webuploader: 'lib/webuploader',
+        jqcitys: "jqmodules/jqcitys"
+    })
+</script>
+<style>
+    .proof {
+    }
+</style>
+<script>
+   
+    layui.use(['list',"jquery"], function () {
+       
+    });
+    
+    function proofClick(img) { 
+        photos.start = layui.jquery(img).parent().parent().index();
+     
+        layer.photos({
+            photos: photos,
+            anim: 5
+        });
+         
+    } 
+</script>
+
+</html>

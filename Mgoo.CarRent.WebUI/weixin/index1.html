@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="map" id="googleMap">
+
+    </div>
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamnlWckhzlXouCA50LbKPsimIVnbFitQ"></script>
+    <script  src="../Assets/js/map.js"></script>
+    <script src="../Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/layer/layer.js"></script>
+    <script src="assets/JqueryExtended.js"></script>
+    <script type="text/javascript">
+         
+        mgoo = new mgMap("googleMap", "GOOGLE");
+        mgoo.loadMap();
+        $(function () {
+            global.ajax({
+                url: "/api/Weixin/GetDeviceInfo?deviceid=9807",
+                data: {},
+                success: function (res) {
+                    if (res.result.Status == 0) {
+
+                    }
+                    console.log(res);
+                },
+                error: function () {
+
+                }
+            });
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shadeClose: false,
+                skin: 'yourclass',
+                content: $("#div")
+            });
+
+
+        });
+
+        function GetDeviceInfo() {
+
+        }
+    </script>
+    <div id="div" class="mgoo-modal">
+        <div>
+
+        </div>
+    </div>
+</body>
+</html>
